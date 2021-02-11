@@ -5,9 +5,9 @@
 
 👯 I’m looking to collaborate on - Python, Data Engineering, Data Science, NLP, Machine learning projects.
 
-          Reach me via LinkedIn -->  www.linkedin.com/in/muralikrishnanrajendran
+####          Reach me via LinkedIn -->  www.linkedin.com/in/muralikrishnanrajendran
 
-          Check out my Tableau dashboards -->  https://public.tableau.com/profile/muralikrishnan.rajendran
+####          Check out my Tableau dashboards -->  https://public.tableau.com/profile/muralikrishnan.rajendran
 
 ### A summary of my work experience - 
 
