@@ -1,6 +1,8 @@
 ## **🚀 Welcome to my Tech Odyssey! 🌟**
 
 Join me on an exploration of 14+ captivating years where I've pioneered the realms of Engineering, Data Science, and Product Development. With a visionary approach, I've led cross-functional teams across the globe, infusing data-driven wisdom into every decision. 🌎📈 Let's embark on a journey of disruptive solutions and limitless possibilities. Connect with me to explore more! 🚀
+
+    #TechInnovation #DataDriven #StrategicLeadership #AIandML #FutureTransformation
     
 ### **🔑 Key Expertise:**
 - Orchestrated 300+ intricate product launches across Telecom, Insurance, Banking, and Retail.  
@@ -34,7 +36,7 @@ Join me on an exploration of 14+ captivating years where I've pioneered the real
     🔌 **Engineering Project**: Infant Monitoring System (CO2 sensors)  
 
     
-    #TechInnovation #DataDriven #StrategicLeadership #AIandML #FutureTransformation
+
 
                                 
 ## 🔍📜 Code Chronicles: "Unveiling My Digital Odyssey of Projects"
