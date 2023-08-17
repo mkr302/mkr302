@@ -12,8 +12,27 @@ Join me on an exploration of 14+ captivating years where I've pioneered the real
   
 ### **💻 Technical Prowess:**  
   AWS Services - EC2, Lambda, S3, Glue, Athena, SES, SNS, Kinesis, Redshift, DynamoDB, CloudFormation, Polly, Lex, Rekognition | Python, R, C++, Pro*C | TensorFlow, PyTorch, Scikit-learn | NLP, Computer Vision, Reinforcement Learning, GNN | RDBMS, Data     Warehousing, Data Lakes | Microservices, RESTful APIs | Java, Linux/Unix/Shell Scripting | Job Schedulers – AutoSys JIL, CRON | BI Tools - Tableau, Power BI, QuickSight | Git, JIRA, ETLs - ODI, Informatica, Ab Initio | HTML, CSS | Security & Compliance Best Practices | Performance Tuning | Database Optimization | Machine Learning Pipelines | A/B Testing | Blockchain Fundamentals | Cloud-Native Application Design
+
+### **🎓 Education:**
+
+- #### Georgia Institute of Technology - MS, Analytics (Computational Data Analytics/ML)  
+    📚 **Key Courses**: Computing, Stat Modeling, Optimization, Machine Learning, AI, RL, Deep Learning, NLP, Data Manipulation, Regression Analysis, Simulation, Human-Computer Interface (HCI)  
+    🔹 **Key Highlights**:  
+            - 📊 Adv. Proficiency in ML & Predictive Modeling  
+            - 💻 Hands-On Big Data & Distributed Computing  
+            - 📈 Data Preprocessing & Feature Engineering  
   
-  
+- #### Southern New Hampshire University - MS, Information Technology (Systems Design)  
+    📚 **Key Courses**: OS, Systems Design, App Dev, DB Design, Telecom Networking, Client-Server Systems  
+    🔍 **Key Highlights**:  
+            -✨ Proficient in App Dev & Tech Communication  
+            -✨ Outstanding STEM Graduate  
+   
+-  #### Shanmugha Arts - BTech, Electronics & Comm Engineering  
+    📄 **Tech Papers**: "Automated flight landing system using Fuzzy logic" (1st place in Data Science/ML)  
+    💼 **Internships**: NIOT (Underwater ROVs), BSNL (CDR KPIs)  
+    🔌 **Engineering Project**: Infant Monitoring System (CO2 sensors)  
+    
     #TechInnovation #DataDriven #StrategicLeadership #AIandML #FutureTransformation
 
                                 
@@ -24,3 +43,4 @@ Join me on an exploration of 14+ captivating years where I've pioneered the real
 - [Barcode QRcode Generator App](https://github.com/mkr302/Barcode_QRcode_Generator_App) | **Description**: Python/Tkinter GUI application for generating Barcode/QR code and to save the code as a PNG file
 - [Math Calculator App](https://github.com/mkr302/Math_Calculator_App) | **Description**: GUI Math calculator created using Python/Tkinter. Mathematical operations such as - addition, subtraction, multiplication, division and modulus. The calculator has functions such as MC, AC, ANS and DELETE.
 - [Data Wrangling - Code Library](https://github.com/mkr302/Data_Wrangling-Code_Library) | **Description**: This repository contains coding blocks that perform data wrangling/data engineering tasks. These include scripts that can generate surrogate data, filter data from a source file based on a given condition or sort data elements.
+
