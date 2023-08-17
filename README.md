@@ -30,7 +30,7 @@ Join me on an exploration of 14+ captivating years where I've pioneered the real
             -✨ Proficient in App Dev & Tech Communication  
             -✨ Outstanding STEM Graduate  
    
--  #### Shanmugha Arts - BTech, Electronics & Comm Engineering  
+-  #### SASTRA University - BS, Electronics & Communication Engineering  (Neural Networks/Math/Statistics)
     📄 **Tech Papers**: "Automated flight landing system using Fuzzy logic" (1st place in Data Science/ML)  
     💼 **Internships**: NIOT (Underwater ROVs), BSNL (CDR KPIs)  
     🔌 **Engineering Project**: Infant Monitoring System (CO2 sensors)  
