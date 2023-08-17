@@ -32,6 +32,7 @@ Join me on an exploration of 14+ captivating years where I've pioneered the real
     📄 **Tech Papers**: "Automated flight landing system using Fuzzy logic" (1st place in Data Science/ML)  
     💼 **Internships**: NIOT (Underwater ROVs), BSNL (CDR KPIs)  
     🔌 **Engineering Project**: Infant Monitoring System (CO2 sensors)  
+
     
     #TechInnovation #DataDriven #StrategicLeadership #AIandML #FutureTransformation
 
