@@ -115,8 +115,9 @@ def generate_charts(stats):
     formatted_prev_year = [f"{value:,}" for value in prev_year_values]
     formatted_curr_year = [f"{value:,}" for value in curr_year_values]
 
-    fig, axes = plt.subplots(1, 2, figsize=(20, 6), sharey=True, facecolor="black")  # Larger spacing
-    plt.subplots_adjust(wspace=1.0)  # Increase spacing between the two plots
+    fig, axes = plt.subplots(1, 2, figsize=(18, 6), sharey=False, facecolor="black")  # Larger spacing
+    #plt.subplots_adjust(wspace=1.0)  # Increase spacing between the two plots
+    plt.subplots_adjust(left=0.05, right=0.95, wspace=0.4)  # Adjust spacing to fill screen width
 
     # Black background and white text
     for ax in axes:
@@ -139,8 +140,8 @@ def generate_charts(stats):
 
     for bar, label in zip(bars1, formatted_lifetime):
         width = bar.get_width()
-        axes[0].text(width + max(lifetime_values) * 0.02, bar.get_y() + bar.get_height()/2, label, 
-                     va="center", fontsize=12, fontweight="bold", color="white")
+        #axes[0].text(width + max(lifetime_values) * 0.02, bar.get_y() + bar.get_height()/2, label, va="center", fontsize=12, fontweight="bold", color="white")
+        axes[0].text(width + max(lifetime_values) * 0.02, bar.get_y(), label, va="center", fontsize=12, fontweight="bold", color="white")
 
     # Right Chart: Previous Year vs Current Year (Side-by-Side Bars)
     y_pos = np.arange(len(yearly_categories))
@@ -154,6 +155,7 @@ def generate_charts(stats):
     axes[1].set_yticks(y_pos)
     axes[1].set_yticklabels(yearly_categories, fontsize=14, fontweight="bold", color="white")
 
+    """
     for bar, label in zip(bars2, formatted_prev_year):
         width = bar.get_width()
         axes[1].text(width + max(prev_year_values) * 0.02, bar.get_y(), label, va="center", fontsize=12, fontweight="bold", color="white")
@@ -162,7 +164,8 @@ def generate_charts(stats):
         width = bar.get_width()
         axes[1].text(width + max(curr_year_values) * 0.02, bar.get_y(), label, va="center", fontsize=12, fontweight="bold", color="white")
 
-    axes[1].legend(loc="lower right", fontsize=12, facecolor="black", edgecolor="white")
+    """
+    #axes[1].legend(loc="lower right", fontsize=12, facecolor="black", edgecolor="white")
 
 
     # Save the PNG file
