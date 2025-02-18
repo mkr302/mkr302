@@ -18,7 +18,7 @@ jobs:
         with:
           token: ${{ github.token }}  # Secure GitHub token
           user: mkr302
-          template: classic  # Style of the graph
+          template: detailed  # Change to 'classic' or 'detailed' or 'terminal'
           base: header, activity, community, repositories, metadata
           config_timezone: America/New_York
           plugin_languages: yes
