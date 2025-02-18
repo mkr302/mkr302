@@ -51,11 +51,19 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 </div>
 
 
+<div align="center">
+<table>
+  <tr>
+    <td align="center">
+      <h3>GitHub Achievements</h3>
+      <p align="left">
+        <img src="https://github-profile-trophy.vercel.app/?username=mkr302&theme=darkhub" width="900">
+      </p>
+    </td>
+  </tr>
+</table>
+</div>
 
-
-
-### GitHub Achievements
-![GitHub Achievements](https://github-profile-trophy.vercel.app/?username=mkr302&theme=darkhub)
 
 
 
