@@ -76,19 +76,37 @@ def generate_chart(stats):
     values = list(stats.values())
     categories = list(stats.keys())
 
-    plt.figure(figsize=(8, 5), facecolor="white")
-    ax = plt.gca()
-    ax.set_facecolor("#F9F9F9")
-
-    plt.bar(categories, values, color=["#2E8B57", "#B22222", "#1E90FF"], alpha=0.85)
-
-    plt.xlabel("Code Changes", fontsize=14, fontweight="bold", color="black")
-    plt.ylabel("Total Lines of Code", fontsize=14, fontweight="bold", color="black")
-    plt.title(f"Lifetime GitHub Code Contributions - {GITHUB_USERNAME}", fontsize=16, fontweight="bold", color="black")
-
-    plt.xticks(fontsize=12, color="black")
-    plt.yticks(fontsize=12, color="black")
-    plt.grid(axis="y", linestyle="--", alpha=0.6, color="gray")
+    fig, ax = plt.subplots(figsize=(8, 5), facecolor="black")
+    ax.set_facecolor("#181818")  # Dark black background
+    
+    # Custom Colors
+    colors = ["#32CD32", "#FF6347", "#1E90FF"]  # Brighter colors for visibility
+    
+    # Generate bar positions to bring them closer together
+    y_pos = np.arange(len(categories))
+    
+    # Create horizontal bars with a modern look
+    bars = ax.barh(y_pos, values, color=colors, alpha=0.9, edgecolor="white", linewidth=1.5, height=0.5)
+    
+    # Annotate the bars with human-readable numbers in white
+    for bar, label in zip(bars, formatted_values):
+        width = bar.get_width()
+        ax.text(width + 100000, bar.get_y() + bar.get_height()/2, label, va="center", fontsize=12, fontweight="bold", color="white")
+    
+    # Customize Title and Labels in white for better contrast
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(categories, fontsize=14, fontweight="bold", color="white")
+    ax.set_xlabel("Total Lines of Code", fontsize=14, fontweight="bold", color="white", labelpad=15)
+    ax.set_title("Lifetime GitHub Code Contributions", fontsize=16, fontweight="bold", color="white", pad=20)
+    
+    # Remove axis lines for a sleek look
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["left"].set_visible(False)
+    ax.spines["bottom"].set_visible(False)
+    
+    # Remove x-ticks for a cleaner look
+    ax.xaxis.set_ticks([])
 
     # Save the PNG file
     plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="white")
