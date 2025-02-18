@@ -97,37 +97,42 @@ def generate_charts(stats):
     formatted_lifetime = [f"{value:,}" for value in lifetime_values]
     formatted_year = [f"{value:,}" for value in year_values]
 
-    fig, axes = plt.subplots(1, 2, figsize=(14, 5), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(14, 6), sharey=True, facecolor="black")  # Larger spacing
+    plt.subplots_adjust(wspace=0.3)  # Increase spacing between the two plots
 
+    # Black background and white text
+    for ax in axes:
+        ax.set_facecolor("black")
+        
     # Monochromatic color scheme transitioning from blue to green
     #colors = ["#E69F00", "#56B4E9", "#009E73"]  # Orange, Blue, Green
-    #colors = ["#4C72B0", "#5A89C9", "#6DAEDB"]  # Darker to lighter blue
-    colors = ["#1F77B4", "#2CA02C", "#17BECF"]  # Blue, Green, Cyan
+    colors = ["#4C72B0", "#5A89C9", "#6DAEDB"]  # Darker to lighter blue
+    #colors = ["#1F77B4", "#2CA02C", "#17BECF"]  # Blue, Green, Cyan
     
     # Generate horizontal bar positions
     y_pos = np.arange(len(categories))
 
     # Left Chart: Lifetime Contributions
-    bars1 = axes[0].barh(y_pos, lifetime_values, color=colors, alpha=0.9, edgecolor="black", linewidth=1.5, height=0.5)
-    axes[0].set_title("Lifetime Contributions", fontsize=16, fontweight="bold", color="black")
-    axes[0].set_xlabel("Total Lines of Code", fontsize=14, fontweight="bold", color="black", labelpad=15)
+    bars1 = axes[0].barh(y_pos, lifetime_values, color=colors, alpha=0.9, edgecolor="white", linewidth=1.5, height=0.5)
+    axes[0].set_title("Lifetime Contributions", fontsize=16, fontweight="bold", color="white")
+    axes[0].set_xlabel("Total Lines of Code", fontsize=14, fontweight="bold", color="white", labelpad=15)
     for bar, label in zip(bars1, formatted_lifetime):
         width = bar.get_width()
         axes[0].text(width + max(lifetime_values) * 0.02, bar.get_y() + bar.get_height()/2, label, 
-                     va="center", fontsize=14, fontweight="bold", color="black")
+                     va="center", fontsize=12, fontweight="bold", color="white")
 
     # Right Chart: Current Year Contributions
-    bars2 = axes[1].barh(y_pos, year_values, color=colors, alpha=0.9, edgecolor="black", linewidth=1.5, height=0.5)
-    axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=16, fontweight="bold", color="black")
-    axes[1].set_xlabel("Total Lines of Code", fontsize=14, fontweight="bold", color="black", labelpad=15)
+    bars2 = axes[1].barh(y_pos, year_values, color=colors, alpha=0.9, edgecolor="white", linewidth=1.5, height=0.5)
+    axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=16, fontweight="bold", color="white")
+    axes[1].set_xlabel("Total Lines of Code", fontsize=14, fontweight="bold", color="white", labelpad=15)
     for bar, label in zip(bars2, formatted_year):
         width = bar.get_width()
         axes[1].text(width + max(year_values) * 0.02, bar.get_y() + bar.get_height()/2, label, 
-                     va="center", fontsize=14, fontweight="bold", color="black")
+                     va="center", fontsize=12, fontweight="bold", color="white")
 
     # Set labels
     axes[0].set_yticks(y_pos)
-    axes[0].set_yticklabels(categories, fontsize=14, fontweight="bold", color="black")
+    axes[0].set_yticklabels(categories, fontsize=14, fontweight="bold", color="white")
     axes[1].set_yticks(y_pos)
     axes[1].set_yticklabels([])  # Hide labels on second plot for clean look
 
@@ -140,7 +145,8 @@ def generate_charts(stats):
         ax.xaxis.set_ticks([])  # Remove x-ticks for a cleaner look
 
     # Save the PNG file
-    plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", transparent=False)
+    #plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", transparent=False)
+    plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="black")
     print("Graph saved as github_code_metrics.png")
 
 if __name__ == "__main__":
