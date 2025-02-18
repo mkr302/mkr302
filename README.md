@@ -37,9 +37,6 @@ Join me on an exploration of 14+ captivating years where I've pioneered the real
 ## 📊 My GitHub Stats
 ![Metrics](https://github.com/mkr302/mkr302/blob/main/github-metrics.svg)
 
-## 🔥 GitHub Activity
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=mkr302&theme=dark)
-
 ## 🚀 Most Used Languages
 ![Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark)
 
