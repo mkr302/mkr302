@@ -1,6 +1,7 @@
 import os
 import requests
 import time
+import numpy as np
 import matplotlib.pyplot as plt
 
 # GitHub API settings
@@ -55,11 +56,12 @@ def process_stats(repos):
             for week in contributor["weeks"]:
                 additions = week["a"]
                 deletions = week["d"]
-                updates = additions - deletions  # Updated lines
+                #updates = additions - deletions  # Updated lines
 
                 total_additions += additions
                 total_deletions += deletions
-                total_updates += updates
+                #total_updates += updates
+                total_updates += min(additions, deletions)  # Actual modified (updated) lines
 
     return {
         "Added": total_additions,
@@ -69,31 +71,30 @@ def process_stats(repos):
 
 def generate_chart(stats):
     """Generate a lifetime GitHub contribution bar chart."""
-    #categories = list(stats.keys())
-    #values = [stats[cat] for cat in categories]
-    
     formatted_values = [f"{value:,}" for value in stats.values()]
     values = list(stats.values())
     categories = list(stats.keys())
 
     fig, ax = plt.subplots(figsize=(8, 5), facecolor="black")
-    ax.set_facecolor("#181818")  # Dark black background
+    ax.set_facecolor("black")  # Black background
     
-    # Custom Colors
-    colors = ["#32CD32", "#FF6347", "#1E90FF"]  # Brighter colors for visibility
+    # Color-blind-friendly colors
+    #colors = ["#E69F00", "#56B4E9", "#009E73"]  # Orange, Blue, Green
+    colors = ["#4C72B0", "#5A89C9", "#6DAEDB"]  # Darker to lighter blue
     
-    # Generate bar positions to bring them closer together
+    # Generate horizontal bar positions
     y_pos = np.arange(len(categories))
     
-    # Create horizontal bars with a modern look
+    # Create horizontal bars
     bars = ax.barh(y_pos, values, color=colors, alpha=0.9, edgecolor="white", linewidth=1.5, height=0.5)
     
-    # Annotate the bars with human-readable numbers in white
+    # Annotate bars with values in white
     for bar, label in zip(bars, formatted_values):
         width = bar.get_width()
-        ax.text(width + 100000, bar.get_y() + bar.get_height()/2, label, va="center", fontsize=12, fontweight="bold", color="white")
+        ax.text(width + max(values) * 0.02, bar.get_y() + bar.get_height()/2, label, 
+                va="center", fontsize=12, fontweight="bold", color="white")
     
-    # Customize Title and Labels in white for better contrast
+    # Customize labels in white for better contrast
     ax.set_yticks(y_pos)
     ax.set_yticklabels(categories, fontsize=14, fontweight="bold", color="white")
     ax.set_xlabel("Total Lines of Code", fontsize=14, fontweight="bold", color="white", labelpad=15)
@@ -104,12 +105,12 @@ def generate_chart(stats):
     ax.spines["right"].set_visible(False)
     ax.spines["left"].set_visible(False)
     ax.spines["bottom"].set_visible(False)
-    
+
     # Remove x-ticks for a cleaner look
     ax.xaxis.set_ticks([])
 
     # Save the PNG file
-    plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="white")
+    plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="black")
     print("Graph saved as github_code_metrics.png")
 
 if __name__ == "__main__":
@@ -121,4 +122,4 @@ if __name__ == "__main__":
         processed_stats = process_stats(repositories)
         print("Generating lifetime chart...")
         generate_chart(processed_stats)
-        print("Done! Check github_lifetime_code_metrics.png.")
+        print("Done! Check github_code_metrics.png.")
