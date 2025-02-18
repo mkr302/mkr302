@@ -37,10 +37,21 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 </div>
 
 
-<h3>Total Code Contributions</h3>
-<p align="left">
-  <img src="https://github.com/mkr302/mkr302/blob/main/github_code_metrics.png" width="900">
-</p>
+<div align="center">
+<table>
+  <tr>
+    <td align="center">
+      <h3>Total Code Contributions</h3>
+      <p align="left">
+        <img src="https://github.com/mkr302/mkr302/blob/main/github_code_metrics.png" width="900">
+      </p>
+    </td>
+  </tr>
+</table>
+</div>
+
+
+
 
 
 ### GitHub Achievements
