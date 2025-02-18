@@ -97,7 +97,7 @@ def generate_charts(stats):
     formatted_lifetime = [f"{value:,}" for value in lifetime_values]
     formatted_year = [f"{value:,}" for value in year_values]
 
-    fig, axes = plt.subplots(1, 2, figsize=(14, 6), sharey=True, facecolor="black")  # Larger spacing
+    fig, axes = plt.subplots(1, 2, figsize=(20, 6), sharey=True, facecolor="black")  # Larger spacing
     plt.subplots_adjust(wspace=1.0)  # Increase spacing between the two plots
 
     # Black background and white text
