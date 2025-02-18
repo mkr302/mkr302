@@ -69,8 +69,12 @@ def process_stats(repos):
 
 def generate_chart(stats):
     """Generate a lifetime GitHub contribution bar chart."""
+    #categories = list(stats.keys())
+    #values = [stats[cat] for cat in categories]
+    
+    formatted_values = [f"{value:,}" for value in stats.values()]
+    values = list(stats.values())
     categories = list(stats.keys())
-    values = [stats[cat] for cat in categories]
 
     plt.figure(figsize=(8, 5), facecolor="white")
     ax = plt.gca()
