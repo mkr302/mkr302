@@ -49,8 +49,6 @@ def process_stats(repos):
 
     current_year = datetime.datetime.now().year
 
-    #previous_year = current_year - 1
-
     for repo in repos:
         print(f"Processing {repo}...")
         stats = fetch_repo_stats(repo)
@@ -61,16 +59,14 @@ def process_stats(repos):
             for week in contributor["weeks"]:
                 additions = week["a"]
                 deletions = week["d"]
-                #updates = additions - deletions  # Updated lines
                 timestamp = week["w"]
                 week_year = datetime.datetime.utcfromtimestamp(timestamp).year
 
                 # Lifetime stats
                 total_additions += additions
                 total_deletions += deletions
-                #total_updates += updates
-                total_updates += min(additions, deletions)  # Actual modified (updated) lines
-                
+                total_updates += min(additions, deletions)
+
                 # Current year stats
                 if week_year == current_year:
                     current_year_add += additions
@@ -79,49 +75,62 @@ def process_stats(repos):
 
     return {
         "lifetime": {
-            "Added": total_additions,
-            "Removed": total_deletions,
-            "Updated": total_updates
+            "Lines Added": total_additions,
+            "Lines Removed": total_deletions,
+            "Lines Updated": total_updates
         },
         "current_year": {
-            "Added": current_year_add,
-            "Removed": current_year_del,
-            "Updated": current_year_upd
+            "Lines Added": current_year_add,
+            "Lines Removed": current_year_del,
+            "Lines Updated": current_year_upd
         }
     }
 
-def generate_charts(stats):
-    """Display lifetime and current year GitHub contributions as numbers."""
-    
-    fig, ax = plt.subplots(figsize=(18, 4), facecolor="black")
-    ax.set_facecolor("black")
-    ax.axis("off")  # Hide axes
+def generate_donut_charts(stats):
+    """Generate side-by-side donut charts for Lifetime & Current Year contributions."""
 
     categories = list(stats["lifetime"].keys())
     lifetime_values = list(stats["lifetime"].values())
     current_values = list(stats["current_year"].values())
 
-    # White text for contrast
-    text_color = "white"
+    # Muted, professional journal-style colors
+    colors = ["#4C72B0", "#DD8452", "#55A868"]  # Soft Blue, Muted Orange, Subtle Green
 
-    # Title
-    ax.text(0.5, 1.1, "GitHub Contribution Summary", fontsize=20, fontweight="bold", color=text_color, ha="center", va="center")
+    fig, axes = plt.subplots(1, 2, figsize=(14, 6), facecolor="black")
 
-    # Labels and values for Lifetime Contributions
-    ax.text(0.25, 0.7, "Lifetime Contributions", fontsize=16, fontweight="bold", color=text_color, ha="center", va="center")
-    for i, (category, value) in enumerate(zip(categories, lifetime_values)):
-        ax.text(0.25, 0.6 - i * 0.15, f"{category}: {value:,}", fontsize=14, color=text_color, ha="center", va="center")
+    for ax in axes:
+        ax.set_facecolor("black")
 
-    # Labels and values for Current Year Contributions
-    ax.text(0.75, 0.7, f"Contributions in {datetime.datetime.now().year}", fontsize=16, fontweight="bold", color=text_color, ha="center", va="center")
-    for i, (category, value) in enumerate(zip(categories, current_values)):
-        ax.text(0.75, 0.6 - i * 0.15, f"{category}: {value:,}", fontsize=14, color=text_color, ha="center", va="center")
+    # Left Chart: Lifetime Contributions
+    wedges, texts, autotexts = axes[0].pie(
+        lifetime_values, labels=categories, autopct="%1.1f%%", startangle=90,
+        colors=colors, wedgeprops={"edgecolor": "black"}, pctdistance=0.75
+    )
+    for text in texts + autotexts:
+        text.set_color("white")
 
+    # Add a circle at the center to make it a donut chart
+    centre_circle = plt.Circle((0, 0), 0.60, fc="black")
+    axes[0].add_artist(centre_circle)
 
+    axes[0].set_title("Lifetime Contributions", fontsize=16, fontweight="bold", color="white")
 
-    # Save the PNG file
-    #plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", transparent=False)
-    plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="black")
+    # Right Chart: Current Year Contributions
+    wedges, texts, autotexts = axes[1].pie(
+        current_values, labels=categories, autopct="%1.1f%%", startangle=90,
+        colors=colors, wedgeprops={"edgecolor": "black"}, pctdistance=0.75
+    )
+    for text in texts + autotexts:
+        text.set_color("white")
+
+    # Add a circle at the center to make it a donut chart
+    centre_circle = plt.Circle((0, 0), 0.60, fc="black")
+    axes[1].add_artist(centre_circle)
+
+    axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=16, fontweight="bold", color="white")
+
+    # Save the PNG file with a **black background**
+    plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="gray")
     print("Graph saved as github_code_metrics.png")
 
 if __name__ == "__main__":
@@ -129,8 +138,8 @@ if __name__ == "__main__":
     repositories = fetch_repositories()
     
     if repositories:
-        print("Fetching lifetime stats and current year stats for all repositories...")
+        print("Fetching lifetime and current year stats for all repositories...")
         processed_stats = process_stats(repositories)
-        print("Generating lifetime and yearly charts...")
-        generate_charts(processed_stats)
-        print("Done! Check github_code_metrics.png.")
+        print("Generating donut charts...")
+        generate_donut_charts(processed_stats)
+        print("Done! Check github_code_donut.png.")
