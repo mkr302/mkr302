@@ -75,30 +75,32 @@ def generate_chart(stats):
     values = list(stats.values())
     categories = list(stats.keys())
 
-    fig, ax = plt.subplots(figsize=(8, 5), facecolor="black")
-    ax.set_facecolor("black")  # Black background
+    #fig, ax = plt.subplots(figsize=(8, 5), facecolor="black")
+    fig, ax = plt.subplots(figsize=(8, 5))
+    #ax.set_facecolor("black")  # Black background
     
     # Color-blind-friendly colors
     #colors = ["#E69F00", "#56B4E9", "#009E73"]  # Orange, Blue, Green
-    colors = ["#4C72B0", "#5A89C9", "#6DAEDB"]  # Darker to lighter blue
+    #colors = ["#4C72B0", "#5A89C9", "#6DAEDB"]  # Darker to lighter blue
+    colors = ["#1F77B4", "#2CA02C", "#17BECF"]  # Blue, Green, Cyan
     
     # Generate horizontal bar positions
     y_pos = np.arange(len(categories))
     
     # Create horizontal bars
-    bars = ax.barh(y_pos, values, color=colors, alpha=0.9, edgecolor="white", linewidth=1.5, height=0.5)
+    bars = ax.barh(y_pos, values, color=colors, alpha=0.9, edgecolor="black", linewidth=1.5, height=0.5)
     
     # Annotate bars with values in white
     for bar, label in zip(bars, formatted_values):
         width = bar.get_width()
         ax.text(width + max(values) * 0.02, bar.get_y() + bar.get_height()/2, label, 
-                va="center", fontsize=12, fontweight="bold", color="white")
+                va="center", fontsize=12, fontweight="bold", color="black")
     
     # Customize labels in white for better contrast
     ax.set_yticks(y_pos)
-    ax.set_yticklabels(categories, fontsize=14, fontweight="bold", color="white")
-    ax.set_xlabel("Total Lines of Code", fontsize=14, fontweight="bold", color="white", labelpad=15)
-    ax.set_title("Lifetime GitHub Code Contributions", fontsize=16, fontweight="bold", color="white", pad=20)
+    ax.set_yticklabels(categories, fontsize=14, fontweight="bold", color="black")
+    ax.set_xlabel("Total Lines of Code", fontsize=14, fontweight="bold", color="black", labelpad=15)
+    ax.set_title("Lifetime GitHub Code Contributions", fontsize=16, fontweight="black", color="white", pad=20)
     
     # Remove axis lines for a sleek look
     ax.spines["top"].set_visible(False)
@@ -110,7 +112,7 @@ def generate_chart(stats):
     ax.xaxis.set_ticks([])
 
     # Save the PNG file
-    plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="black")
+    plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", transparent=True)
     print("Graph saved as github_code_metrics.png")
 
 if __name__ == "__main__":
