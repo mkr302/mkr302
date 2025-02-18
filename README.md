@@ -10,21 +10,6 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 - Master of Science - MS, Information Technology (Systems design), Southern New Hampshire University
 - Bachelor of Science - BS, Electronics and Communication Engineering, SASTRA University, India
 
-
-## Most Used Languages
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark&langs_count=6)
-
-## Overall GitHub Stats
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=mkr302&show_icons=true&theme=dark)
-
-## Total Code Contributions
-![GitHub Code Metrics](https://github.com/mkr302/mkr302/blob/main/github_code_metrics.png)
-
-## GitHub Achievements
-![GitHub Achievements](https://github-profile-trophy.vercel.app/?username=mkr302&theme=darkhub)
-
-
-                                
 ## Code Chronicles:
 
 - [Twitter Climate Change Tweets - Sentiment Analysis](https://github.com/mkr302/Twitter_Climate_Change_Tweets-Sentiment_Analysis) | **Description**: Sentiment analysis on global warming through social media discourse. The sentiment analysis revealed a balanced distribution of sentiments among Twitter users discussing climate change, with notable outliers expressing extreme opinions.
@@ -33,4 +18,22 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 - [Barcode QRcode Generator App](https://github.com/mkr302/Barcode_QRcode_Generator_App) | **Description**: Python/Tkinter GUI application for generating Barcode/QR code and to save the code as a PNG file
 - [Math Calculator App](https://github.com/mkr302/Math_Calculator_App) | **Description**: GUI Math calculator created using Python/Tkinter. Mathematical operations such as - addition, subtraction, multiplication, division and modulus. The calculator has functions such as MC, AC, ANS and DELETE.
 - [Data Wrangling - Code Library](https://github.com/mkr302/Data_Wrangling-Code_Library) | **Description**: This repository contains coding blocks that perform data wrangling/data engineering tasks. These include scripts that can generate surrogate data, filter data from a source file based on a given condition or sort data elements.
+
+## Git Stats
+
+### Most Used Languages
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark&langs_count=6)
+
+### Overall GitHub Stats
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=mkr302&show_icons=true&theme=dark)
+
+### Total Code Contributions
+![GitHub Code Metrics](https://github.com/mkr302/mkr302/blob/main/github_code_metrics.png)
+
+### GitHub Achievements
+![GitHub Achievements](https://github-profile-trophy.vercel.app/?username=mkr302&theme=darkhub)
+
+
+                                
+
 
