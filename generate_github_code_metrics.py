@@ -46,8 +46,11 @@ def process_stats(repos):
     """Aggregate both lifetime and current year GitHub stats."""
     total_additions, total_deletions, total_updates = 0, 0, 0
     year_additions, year_deletions, year_updates = 0, 0, 0
-
+    current_year_add, current_year_del, current_year_upd = 0, 0, 0
+    prev_year_add, prev_year_del, prev_year_upd = 0, 0, 0
+    
     current_year = datetime.datetime.now().year
+    previous_year = current_year - 1
 
     for repo in repos:
         print(f"Processing {repo}...")
@@ -71,9 +74,13 @@ def process_stats(repos):
                 
                 # Current year stats
                 if week_year == current_year:
-                    year_additions += additions
-                    year_deletions += deletions
-                    year_updates += min(additions, deletions)
+                    current_year_add += additions
+                    current_year_del += deletions
+                    current_year_upd += min(additions, deletions)
+                elif week_year == previous_year:
+                    prev_year_add += additions
+                    prev_year_del += deletions
+                    prev_year_upd += min(additions, deletions)
 
     return {
         "lifetime": {
@@ -81,10 +88,17 @@ def process_stats(repos):
             "Removed": total_deletions,
             "Updated": total_updates
         },
-        "current_year": {
-            "Added": year_additions,
-            "Removed": year_deletions,
-            "Updated": year_updates
+        "yearly": {
+            "Previous Year": {
+                "Added": prev_year_add,
+                "Removed": prev_year_del,
+                "Updated": prev_year_upd
+            },
+            "Current Year": {
+                "Added": current_year_add,
+                "Removed": current_year_del,
+                "Updated": current_year_upd
+            }
         }
     }
 
@@ -92,10 +106,14 @@ def generate_charts(stats):
     """Generate two side-by-side GitHub contribution bar charts."""
     categories = list(stats["lifetime"].keys())
     lifetime_values = list(stats["lifetime"].values())
-    year_values = list(stats["current_year"].values())
+
+    yearly_categories = list(stats["yearly"]["Current Year"].keys())
+    prev_year_values = list(stats["yearly"]["Previous Year"].values())
+    curr_year_values = list(stats["yearly"]["Current Year"].values())
 
     formatted_lifetime = [f"{value:,}" for value in lifetime_values]
-    formatted_year = [f"{value:,}" for value in year_values]
+    formatted_prev_year = [f"{value:,}" for value in prev_year_values]
+    formatted_curr_year = [f"{value:,}" for value in curr_year_values]
 
     fig, axes = plt.subplots(1, 2, figsize=(20, 6), sharey=True, facecolor="black")  # Larger spacing
     plt.subplots_adjust(wspace=1.0)  # Increase spacing between the two plots
@@ -117,38 +135,35 @@ def generate_charts(stats):
     axes[0].set_title("Lifetime Contributions", fontsize=16, fontweight="bold", color="white")
     axes[0].set_xlabel("Total Lines of Code", fontsize=14, fontweight="bold", color="white", labelpad=15)
     axes[0].set_yticks(y_pos)
-    axes[0].set_yticklabels(categories, fontsize=14, fontweight="bold", color="white")  # y-labels
-    
+    axes[0].set_yticklabels(categories, fontsize=14, fontweight="bold", color="white")
+
     for bar, label in zip(bars1, formatted_lifetime):
         width = bar.get_width()
         axes[0].text(width + max(lifetime_values) * 0.02, bar.get_y() + bar.get_height()/2, label, 
                      va="center", fontsize=12, fontweight="bold", color="white")
 
-    # Right Chart: Current Year Contributions
-    bars2 = axes[1].barh(y_pos, year_values, color=colors, alpha=0.9, edgecolor="white", linewidth=1.5, height=0.5)
-    axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=16, fontweight="bold", color="white")
+    # Right Chart: Previous Year vs Current Year (Side-by-Side Bars)
+    y_pos = np.arange(len(yearly_categories))
+    bar_width = 0.4  # Width for side-by-side bars
+
+    bars2 = axes[1].barh(y_pos - bar_width/2, prev_year_values, color="#1F77B4", alpha=0.9, edgecolor="white", linewidth=1.5, height=bar_width, label="Previous Year")
+    bars3 = axes[1].barh(y_pos + bar_width/2, curr_year_values, color="#2CA02C", alpha=0.9, edgecolor="white", linewidth=1.5, height=bar_width, label="Current Year")
+
+    axes[1].set_title(f"Previous vs Current Year Contributions", fontsize=16, fontweight="bold", color="white")
     axes[1].set_xlabel("Total Lines of Code", fontsize=14, fontweight="bold", color="white", labelpad=15)
     axes[1].set_yticks(y_pos)
-    axes[1].set_yticklabels(categories, fontsize=14, fontweight="bold", color="white")  # y-labels
-    
-    for bar, label in zip(bars2, formatted_year):
+    axes[1].set_yticklabels(yearly_categories, fontsize=14, fontweight="bold", color="white")
+
+    for bar, label in zip(bars2, formatted_prev_year):
         width = bar.get_width()
-        axes[1].text(width + max(year_values) * 0.02, bar.get_y() + bar.get_height()/2, label, 
-                     va="center", fontsize=12, fontweight="bold", color="white")
+        axes[1].text(width + max(prev_year_values) * 0.02, bar.get_y(), label, va="center", fontsize=12, fontweight="bold", color="white")
 
-    # Set labels
-    axes[0].set_yticks(y_pos)
-    axes[0].set_yticklabels(categories, fontsize=14, fontweight="bold", color="white")
-    axes[1].set_yticks(y_pos)
-    axes[1].set_yticklabels([])  # Hide labels on second plot for clean look
+    for bar, label in zip(bars3, formatted_curr_year):
+        width = bar.get_width()
+        axes[1].text(width + max(curr_year_values) * 0.02, bar.get_y(), label, va="center", fontsize=12, fontweight="bold", color="white")
 
-    # Remove axis lines
-    for ax in axes:
-        ax.spines["top"].set_visible(False)
-        ax.spines["right"].set_visible(False)
-        ax.spines["left"].set_visible(False)
-        ax.spines["bottom"].set_visible(False)
-        ax.xaxis.set_ticks([])  # Remove x-ticks for a cleaner look
+    axes[1].legend(loc="lower right", fontsize=12, facecolor="black", edgecolor="white")
+
 
     # Save the PNG file
     #plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", transparent=False)
