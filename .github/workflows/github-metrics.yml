@@ -17,7 +17,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           token: ${{ github.token }}  # Secure GitHub token
-          user: your-username
+          user: mkr302
           template: classic  # Style of the graph
           base: header, activity, community, repositories, metadata
           config_timezone: America/New_York
