@@ -34,6 +34,17 @@ Join me on an exploration of 14+ captivating years where I've pioneered the real
     🔌 **Engineering Project**: Infant Monitoring System (CO2 sensors)  
 
     
+## 📊 My GitHub Stats
+![Metrics](https://github.com/your-username/your-username/blob/main/github-metrics.svg)
+
+## 🔥 GitHub Activity
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=your-username&theme=dark)
+
+## 🚀 Most Used Languages
+![Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=your-username&layout=compact&theme=dark)
+
+## 🌟 GitHub Profile Summary
+![Profile Summary](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=your-username&theme=dark)
 
 
                                 
