@@ -20,9 +20,6 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 ## GitHub Achievements
 ![GitHub Achievements](https://github-profile-trophy.vercel.app/?username=mkr302&theme=darkhub)
 
-## 🚀 Profile Summary
-![Profile Summary](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=mkr302&theme=dark)
-
 
                                 
 ## Code Chronicles:
