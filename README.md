@@ -18,7 +18,7 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=mkr302&show_icons=true&theme=dark)
 
 ## Total Code Contributions
-![GitHub Code Metrics](https://github.com/your-username/mkr302/blob/main/github_code_metrics.png)
+![GitHub Code Metrics](https://github.com/mkr302/mkr302/blob/main/github_code_metrics.png)
 
 ## GitHub Achievements
 ![GitHub Achievements](https://github-profile-trophy.vercel.app/?username=mkr302&theme=darkhub)
