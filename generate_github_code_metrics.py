@@ -88,7 +88,7 @@ def process_stats(repos):
         }
     }
 
-def generate_chart(stats):
+def generate_charts(stats):
     """Generate two side-by-side GitHub contribution bar charts."""
     categories = list(stats["lifetime"].keys())
     lifetime_values = list(stats["lifetime"].values())
