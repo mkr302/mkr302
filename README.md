@@ -1,10 +1,10 @@
-## ** Welcome to my Tech Odyssey! **
+# Welcome to my Tech Odyssey!
 
-### In the Trenches:
+## In the Trenches:
 
 Engineering and Data Science enthusiast with over 14 years of hands-on experience in Technology, Product Development, and Banking. I’ve had the privilege (and sometimes the chaos) of leading diverse, cross-functional teams across different time zones for the past 5 years. You could say I’ve gotten pretty good at knowing what time it is everywhere. I’m a strong believer in the power of data-driven decision-making - numbers don’t lie, though they can be pretty good at playing hide and seek. With a solid background in software engineering and data science, I’ve helped launch over 300 products in Telecom, Insurance, Banking, and Retail. These adventures have led to nearly $400 million in cost savings and the achievement of more than 200 strategic goals. When I’m not busy finding creative solutions, I’m probably daydreaming about what the next big challenge will be, because who doesn’t love a good puzzle?
 
-### In the Classroom:
+## In the Classroom:
 
 - Master of Science - MS, Analytics (Computational Data Analytics/Machine Learning), Georgia Institute of Technology
 - Master of Science - MS, Information Technology (Systems design), Southern New Hampshire University
@@ -19,7 +19,7 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 
 
                                 
-## Code Chronicles:"
+## Code Chronicles:
 
 - [Twitter Climate Change Tweets - Sentiment Analysis](https://github.com/mkr302/Twitter_Climate_Change_Tweets-Sentiment_Analysis) | **Description**: Sentiment analysis on global warming through social media discourse. The sentiment analysis revealed a balanced distribution of sentiments among Twitter users discussing climate change, with notable outliers expressing extreme opinions.
 - [Climate Change - Regression Analysis](https://github.com/mkr302/Climate_Change-Regression_Analysis) | **Description**: This project investigates the intricate chain of effects associated with global warming, focusing on the correlation between greenhouse gas emissions and historical temperature variations, as well as how temperature changes influence rainfall patterns.
