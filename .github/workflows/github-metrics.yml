@@ -10,31 +10,42 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write  # Allows updating README with stats
-      issues: read  # Allows reading issue-related stats
-      pull-requests: read  # Allows reading PR-related stats
     steps:
       - name: Generate GitHub Metrics
         uses: lowlighter/metrics@latest
         with:
           token: ${{ github.token }}  # Secure GitHub token
           user: mkr302
-          template: detailed  # Change to 'classic' or 'detailed' or 'terminal'
-          base: header, activity, community, repositories, metadata
+          template: classic  # Change to 'classic' or 'detailed' or 'terminal'
           config_timezone: America/New_York
+
+          # 🏆 ADD A PERFORMANCE GRADE BADGE
+          plugin_ratings: yes
+
+          # 📊 MOST USED LANGUAGES
           plugin_languages: yes
           plugin_languages_details: percentage
+          plugin_languages_limit: 6
+          plugin_languages_sections: most-used, recently-used
+          plugin_languages_other: yes
           plugin_languages_indepth: yes
-          plugin_languages_limit: 8
-          plugin_lines: yes
-          plugin_traffic: yes
-          plugin_repositories: yes
-          plugin_repositories_forks: yes
+
+          # 🔥 ACTIVITY OVERVIEW
           plugin_activity: yes
           plugin_activity_limit: 5
+          plugin_activity_days: 14
           plugin_activity_filter: all
+
+          # 🏗️ REPOSITORY & CODE ANALYSIS
+          plugin_repositories: yes
+          plugin_repositories_affiliations: owner, collaborator
+
+          # 🚀 STATS & CONTRIBUTIONS
           plugin_stars: yes
           plugin_stars_limit: 5
-          plugin_repositories_affiliations: owner, collaborator
-          plugin_followup: yes
-          plugin_reactions: yes
-          plugin_reactions_limit: 100
+          plugin_lines: yes
+          
+          # 🛠️ CUSTOMIZATION
+          config_twemoji: yes  # Enables emoji support
+          config_octicon: yes  # Enables GitHub icons
+          config_display: large  # Improves readability
