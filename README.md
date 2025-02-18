@@ -11,23 +11,23 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 - Bachelor of Science - BS, Electronics and Communication Engineering, SASTRA University, India
 
 
-## GitHub Stats
-![Metrics](https://github.com/mkr302/mkr302/blob/main/github-metrics.svg)
+## 📊 Most Used Languages
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=your-username&layout=compact&theme=dark&langs_count=6)
 
-## Most Used Languages
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark)
+## 🔥 GitHub Activity Streak
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=your-username&theme=dark)
 
-## Overall GitHub Stats
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=mkr302&show_icons=true&theme=dark)
+## 🌟 Overall GitHub Stats
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=your-username&show_icons=true&theme=dark)
 
 ## 🏆 GitHub Achievements
-![GitHub Achievements](https://github-profile-trophy.vercel.app/?username=mkr302&theme=darkhub)
+![GitHub Achievements](https://github-profile-trophy.vercel.app/?username=your-username&theme=darkhub)
 
 ## 🏗️ Contribution Graph
-![GitHub Graph](https://activity-graph.herokuapp.com/graph?username=mkr302&theme=github-dark)
+![GitHub Graph](https://activity-graph.herokuapp.com/graph?username=your-username&theme=github-dark)
 
 ## 🚀 Profile Summary
-![Profile Summary](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=mkr302&theme=dark)
+![Profile Summary](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=your-username&theme=dark)
 
 
                                 
