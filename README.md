@@ -11,13 +11,13 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 - Bachelor of Science - BS, Electronics and Communication Engineering, SASTRA University, India
 
 
-## 📊 Most Used Languages
+## Most Used Languages
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark&langs_count=6)
 
-## 🌟 Overall GitHub Stats
+## Overall GitHub Stats
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=mkr302&show_icons=true&theme=dark)
 
-## 🏆 GitHub Achievements
+## GitHub Achievements
 ![GitHub Achievements](https://github-profile-trophy.vercel.app/?username=mkr302&theme=darkhub)
 
 ## 🚀 Profile Summary
