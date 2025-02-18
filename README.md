@@ -11,7 +11,7 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 - Bachelor of Science - BS, Electronics and Communication Engineering, SASTRA University, India
 
 
-## 📊 My GitHub Stats
+## 📊 GitHub Stats
 ![Metrics](https://github.com/mkr302/mkr302/blob/main/github-metrics.svg)
 
 ## 🚀 Most Used Languages
