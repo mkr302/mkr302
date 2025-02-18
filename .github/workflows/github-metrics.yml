@@ -34,7 +34,6 @@ jobs:
           plugin_activity_filter: all
           plugin_stars: yes
           plugin_stars_limit: 5
-          plugin_contributions: yes
           plugin_repositories_affiliations: owner, collaborator
           plugin_followup: yes
           plugin_reactions: yes
