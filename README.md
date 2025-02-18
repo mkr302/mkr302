@@ -17,6 +17,24 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 ## 🚀 Most Used Languages
 ![Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark)
 
+## 📊 Most Used Languages
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark&langs_count=6)
+
+## 🔥 GitHub Activity Streak
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=mkr302&theme=dark)
+
+## 🌟 Overall GitHub Stats
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=mkr302&show_icons=true&theme=dark)
+
+## 🏆 GitHub Achievements
+![GitHub Achievements](https://github-profile-trophy.vercel.app/?username=mkr302&theme=darkhub)
+
+## 🏗️ Contribution Graph
+![GitHub Graph](https://activity-graph.herokuapp.com/graph?username=mkr302&theme=github-dark)
+
+## 🚀 Profile Summary
+![Profile Summary](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=mkr302&theme=dark)
+
 
                                 
 ## Code Chronicles:
