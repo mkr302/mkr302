@@ -22,15 +22,20 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 ## Git Stats
 
 <div align="center">
-### Most Used Languages  
-<a href="https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark&langs_count=6">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark&langs_count=6" height="165">
-</a>
-### Overall GitHub Stats  
-<a href="https://github-readme-stats.vercel.app/api?username=mkr302&show_icons=true&theme=dark">
-    <img src="https://github-readme-stats.vercel.app/api?username=mkr302&show_icons=true&theme=dark" height="165">
-</a>
+<table>
+  <tr>
+    <td align="center">
+      <h3>Most Used Languages</h3>
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark&langs_count=6" height="165">
+    </td>
+    <td align="center">
+      <h3>Overall GitHub Stats</h3>
+      <img src="https://github-readme-stats.vercel.app/api?username=mkr302&show_icons=true&theme=dark" height="165">
+    </td>
+  </tr>
+</table>
 </div>
+
 
 <h3>Total Code Contributions</h3>
 <p align="left">
