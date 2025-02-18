@@ -1,51 +1,26 @@
-## **🚀 Welcome to my Tech Odyssey! 🌟**
+## ** Welcome to my Tech Odyssey! **
 
-Join me on an exploration of 14+ captivating years where I've pioneered the realms of Engineering, Data Science, and Product Development. With a visionary approach, I've led cross-functional teams across the globe, infusing data-driven wisdom into every decision. 🌎📈 Let's embark on a journey of disruptive solutions and limitless possibilities. Connect with me to explore more! 🚀
- 
-### **🔑 Key Expertise:**
-- Orchestrated 300+ intricate product launches across Telecom, Insurance, Banking, and Retail.  
-- Garnered $400M in cost savings, achieving 200+ strategic milestones.  
-- Adept in Management & Technical prowess.  
-  
-### **📊 Management Mastery:**  
-  Agile | Lean Process | Stakeholder Engagements | Risk Mitigation | Leadership Development | Governance Framework | Strategic Planning | Innovation Catalyst | Resource Optimization
-  
-### **💻 Technical Prowess:**  
-  AWS Services - EC2, Lambda, S3, Glue, Athena, SES, SNS, Kinesis, Redshift, DynamoDB, CloudFormation, Polly, Lex, Rekognition | Python, R, C++, Pro*C | TensorFlow, PyTorch, Scikit-learn | NLP, Computer Vision, Reinforcement Learning, GNN | RDBMS, Data     Warehousing, Data Lakes | Microservices, RESTful APIs | Java, Linux/Unix/Shell Scripting | Job Schedulers – AutoSys JIL, CRON | BI Tools - Tableau, Power BI, QuickSight | Git, JIRA, ETLs - ODI, Informatica, Ab Initio | HTML, CSS | Security & Compliance Best Practices | Performance Tuning | Database Optimization | Machine Learning Pipelines | A/B Testing | Blockchain Fundamentals | Cloud-Native Application Design
+### In the Trenches:
 
-### **🎓 Education:**
+Engineering and Data Science enthusiast with over 14 years of hands-on experience in Technology, Product Development, and Banking. I’ve had the privilege (and sometimes the chaos) of leading diverse, cross-functional teams across different time zones for the past 5 years. You could say I’ve gotten pretty good at knowing what time it is everywhere. I’m a strong believer in the power of data-driven decision-making - numbers don’t lie, though they can be pretty good at playing hide and seek. With a solid background in software engineering and data science, I’ve helped launch over 300 products in Telecom, Insurance, Banking, and Retail. These adventures have led to nearly $400 million in cost savings and the achievement of more than 200 strategic goals. When I’m not busy finding creative solutions, I’m probably daydreaming about what the next big challenge will be, because who doesn’t love a good puzzle?
 
-- #### Georgia Institute of Technology - MS, Analytics (Computational Data Analytics/ML)  
-    📚 **Key Courses**: Computing, Stat Modeling, Optimization, Machine Learning, AI, RL, Deep Learning, NLP, Data Manipulation, Regression Analysis, Simulation, Human-Computer Interface (HCI)  
-    🔹 **Key Highlights**:  
-            - 📊 Adv. Proficiency in ML & Predictive Modeling  
-            - 💻 Hands-On Big Data & Distributed Computing  
-            - 📈 Data Preprocessing & Feature Engineering  
-  
-- #### Southern New Hampshire University - MS, Information Technology (Systems Design)  
-    📚 **Key Courses**: OS, Systems Design, App Dev, DB Design, Telecom Networking, Client-Server Systems  
-    🔍 **Key Highlights**:  
-            -✨ Proficient in App Dev & Tech Communication  
-            -✨ Outstanding STEM Graduate  
-   
--  #### SASTRA University - BS, Electronics & Communication Engineering  (Neural Networks/Math/Statistics)
-    📄 **Tech Papers**: "Automated flight landing system using Fuzzy logic" (1st place in Data Science/ML)  
-    💼 **Internships**: NIOT (Underwater ROVs), BSNL (CDR KPIs)  
-    🔌 **Engineering Project**: Infant Monitoring System (CO2 sensors)  
+### In the Classroom:
 
-    
+- Master of Science - MS, Analytics (Computational Data Analytics/Machine Learning), Georgia Institute of Technology
+- Master of Science - MS, Information Technology (Systems design), Southern New Hampshire University
+- Bachelor of Science - BS, Electronics and Communication Engineering, SASTRA University, India
+
+
 ## 📊 My GitHub Stats
 ![Metrics](https://github.com/mkr302/mkr302/blob/main/github-metrics.svg)
 
 ## 🚀 Most Used Languages
 ![Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark)
 
-## 🌟 GitHub Profile Summary
-![Profile Summary](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=mkr302&theme=dark)
-
 
                                 
-## 🔍📜 Code Chronicles: "Unveiling My Digital Odyssey of Projects"
+## Code Chronicles:"
+
 - [Twitter Climate Change Tweets - Sentiment Analysis](https://github.com/mkr302/Twitter_Climate_Change_Tweets-Sentiment_Analysis) | **Description**: Sentiment analysis on global warming through social media discourse. The sentiment analysis revealed a balanced distribution of sentiments among Twitter users discussing climate change, with notable outliers expressing extreme opinions.
 - [Climate Change - Regression Analysis](https://github.com/mkr302/Climate_Change-Regression_Analysis) | **Description**: This project investigates the intricate chain of effects associated with global warming, focusing on the correlation between greenhouse gas emissions and historical temperature variations, as well as how temperature changes influence rainfall patterns.
 - [Wikipedia Mimic - WebScraper App](https://github.com/mkr302/Wikipedia_Mimic-WebScraper_App) | **Description**: GUI application for scraping web/wiki contents for a given search term, using Beautiful soup, Requests and Tkinter
