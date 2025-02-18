@@ -19,7 +19,7 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 - [Math Calculator App](https://github.com/mkr302/Math_Calculator_App) | **Description**: GUI Math calculator created using Python/Tkinter. Mathematical operations such as - addition, subtraction, multiplication, division and modulus. The calculator has functions such as MC, AC, ANS and DELETE.
 - [Data Wrangling - Code Library](https://github.com/mkr302/Data_Wrangling-Code_Library) | **Description**: This repository contains coding blocks that perform data wrangling/data engineering tasks. These include scripts that can generate surrogate data, filter data from a source file based on a given condition or sort data elements.
 
-## Git Stats
+## Git Stats:
 
 <div align="center">
 <table>
