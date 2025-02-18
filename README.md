@@ -21,16 +21,22 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 
 ## Git Stats
 
-### Most Used Languages
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark&langs_count=6)
-
-### Overall GitHub Stats
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=mkr302&show_icons=true&theme=dark)
+<div align="center">
+### Most Used Languages  
+<a href="https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark&langs_count=6">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark&langs_count=6" height="165">
+</a>
+### Overall GitHub Stats  
+<a href="https://github-readme-stats.vercel.app/api?username=mkr302&show_icons=true&theme=dark">
+    <img src="https://github-readme-stats.vercel.app/api?username=mkr302&show_icons=true&theme=dark" height="165">
+</a>
+</div>
 
 <h3>Total Code Contributions</h3>
 <p align="left">
   <img src="https://github.com/mkr302/mkr302/blob/main/github_code_metrics.png" width="500">
 </p>
+
 
 ### GitHub Achievements
 ![GitHub Achievements](https://github-profile-trophy.vercel.app/?username=mkr302&theme=darkhub)
