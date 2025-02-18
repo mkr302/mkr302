@@ -3,6 +3,7 @@ import requests
 import time
 import numpy as np
 import matplotlib.pyplot as plt
+import datetime
 
 # GitHub API settings
 GITHUB_USERNAME = "mkr302"  
@@ -23,11 +24,10 @@ def fetch_repositories():
     return [repo["name"] for repo in repos]
 
 def fetch_repo_stats(repo_name):
-    """Fetch lifetime contributor stats for a repository."""
+    """Fetch contributor stats for a repository."""
     url = f"https://api.github.com/repos/{GITHUB_USERNAME}/{repo_name}/stats/contributors"
     headers = {"Authorization": f"token {GITHUB_TOKEN}"}
     
-    # Handle GitHub API rate limits
     for _ in range(5):  # Retry up to 5 times
         response = requests.get(url, headers=headers)
         
@@ -43,8 +43,11 @@ def fetch_repo_stats(repo_name):
     return None
 
 def process_stats(repos):
-    """Aggregate lifetime GitHub stats across all repositories."""
+    """Aggregate both lifetime and current year GitHub stats."""
     total_additions, total_deletions, total_updates = 0, 0, 0
+    year_additions, year_deletions, year_updates = 0, 0, 0
+
+    current_year = datetime.datetime.now().year
 
     for repo in repos:
         print(f"Processing {repo}...")
@@ -57,62 +60,87 @@ def process_stats(repos):
                 additions = week["a"]
                 deletions = week["d"]
                 #updates = additions - deletions  # Updated lines
+                timestamp = week["w"]
+                week_year = datetime.datetime.utcfromtimestamp(timestamp).year
 
+                # Lifetime stats
                 total_additions += additions
                 total_deletions += deletions
                 #total_updates += updates
                 total_updates += min(additions, deletions)  # Actual modified (updated) lines
+                
+                # Current year stats
+                if week_year == current_year:
+                    year_additions += additions
+                    year_deletions += deletions
+                    year_updates += min(additions, deletions)
 
     return {
-        "Added": total_additions,
-        "Removed": total_deletions,
-        "Updated": total_updates
+        "lifetime": {
+            "Added": total_additions,
+            "Removed": total_deletions,
+            "Updated": total_updates
+        },
+        "current_year": {
+            "Added": year_additions,
+            "Removed": year_deletions,
+            "Updated": year_updates
+        }
     }
 
 def generate_chart(stats):
-    """Generate a lifetime GitHub contribution bar chart."""
-    formatted_values = [f"{value:,}" for value in stats.values()]
-    values = list(stats.values())
-    categories = list(stats.keys())
+    """Generate two side-by-side GitHub contribution bar charts."""
+    categories = list(stats["lifetime"].keys())
+    lifetime_values = list(stats["lifetime"].values())
+    year_values = list(stats["current_year"].values())
 
-    #fig, ax = plt.subplots(figsize=(8, 5), facecolor="black")
-    fig, ax = plt.subplots(figsize=(8, 5))
-    #ax.set_facecolor("black")  # Black background
-    
-    # Color-blind-friendly colors
+    formatted_lifetime = [f"{value:,}" for value in lifetime_values]
+    formatted_year = [f"{value:,}" for value in year_values]
+
+    fig, axes = plt.subplots(1, 2, figsize=(14, 5), sharey=True)
+
+    # Monochromatic color scheme transitioning from blue to green
     #colors = ["#E69F00", "#56B4E9", "#009E73"]  # Orange, Blue, Green
     #colors = ["#4C72B0", "#5A89C9", "#6DAEDB"]  # Darker to lighter blue
     colors = ["#1F77B4", "#2CA02C", "#17BECF"]  # Blue, Green, Cyan
     
     # Generate horizontal bar positions
     y_pos = np.arange(len(categories))
-    
-    # Create horizontal bars
-    bars = ax.barh(y_pos, values, color=colors, alpha=0.9, edgecolor="black", linewidth=1.5, height=0.5)
-    
-    # Annotate bars with values in white
-    for bar, label in zip(bars, formatted_values):
-        width = bar.get_width()
-        ax.text(width + max(values) * 0.02, bar.get_y() + bar.get_height()/2, label, 
-                va="center", fontsize=12, fontweight="bold", color="black")
-    
-    # Customize labels in white for better contrast
-    ax.set_yticks(y_pos)
-    ax.set_yticklabels(categories, fontsize=14, fontweight="bold", color="black")
-    ax.set_xlabel("Total Lines of Code", fontsize=14, fontweight="bold", color="black", labelpad=15)
-    ax.set_title("Lifetime GitHub Code Contributions", fontsize=16, fontweight="black", color="white", pad=20)
-    
-    # Remove axis lines for a sleek look
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-    ax.spines["left"].set_visible(False)
-    ax.spines["bottom"].set_visible(False)
 
-    # Remove x-ticks for a cleaner look
-    ax.xaxis.set_ticks([])
+    # Left Chart: Lifetime Contributions
+    bars1 = axes[0].barh(y_pos, lifetime_values, color=colors, alpha=0.9, edgecolor="black", linewidth=1.5, height=0.5)
+    axes[0].set_title("Lifetime Contributions", fontsize=16, fontweight="bold", color="black")
+    axes[0].set_xlabel("Total Lines of Code", fontsize=14, fontweight="bold", color="black", labelpad=15)
+    for bar, label in zip(bars1, formatted_lifetime):
+        width = bar.get_width()
+        axes[0].text(width + max(lifetime_values) * 0.02, bar.get_y() + bar.get_height()/2, label, 
+                     va="center", fontsize=14, fontweight="bold", color="black")
+
+    # Right Chart: Current Year Contributions
+    bars2 = axes[1].barh(y_pos, year_values, color=colors, alpha=0.9, edgecolor="black", linewidth=1.5, height=0.5)
+    axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=16, fontweight="bold", color="black")
+    axes[1].set_xlabel("Total Lines of Code", fontsize=14, fontweight="bold", color="black", labelpad=15)
+    for bar, label in zip(bars2, formatted_year):
+        width = bar.get_width()
+        axes[1].text(width + max(year_values) * 0.02, bar.get_y() + bar.get_height()/2, label, 
+                     va="center", fontsize=14, fontweight="bold", color="black")
+
+    # Set labels
+    axes[0].set_yticks(y_pos)
+    axes[0].set_yticklabels(categories, fontsize=14, fontweight="bold", color="black")
+    axes[1].set_yticks(y_pos)
+    axes[1].set_yticklabels([])  # Hide labels on second plot for clean look
+
+    # Remove axis lines
+    for ax in axes:
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+        ax.spines["left"].set_visible(False)
+        ax.spines["bottom"].set_visible(False)
+        ax.xaxis.set_ticks([])  # Remove x-ticks for a cleaner look
 
     # Save the PNG file
-    plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", transparent=True)
+    plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", transparent=False)
     print("Graph saved as github_code_metrics.png")
 
 if __name__ == "__main__":
@@ -120,8 +148,8 @@ if __name__ == "__main__":
     repositories = fetch_repositories()
     
     if repositories:
-        print("Fetching lifetime stats for all repositories...")
+        print("Fetching lifetime stats and current year stats for all repositories...")
         processed_stats = process_stats(repositories)
-        print("Generating lifetime chart...")
-        generate_chart(processed_stats)
+        print("Generating lifetime and yearly charts...")
+        generate_charts(processed_stats)
         print("Done! Check github_code_metrics.png.")
