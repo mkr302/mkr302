@@ -98,7 +98,7 @@ def generate_charts(stats):
     formatted_year = [f"{value:,}" for value in year_values]
 
     fig, axes = plt.subplots(1, 2, figsize=(14, 6), sharey=True, facecolor="black")  # Larger spacing
-    plt.subplots_adjust(wspace=0.3)  # Increase spacing between the two plots
+    plt.subplots_adjust(wspace=1.0)  # Increase spacing between the two plots
 
     # Black background and white text
     for ax in axes:
@@ -116,6 +116,9 @@ def generate_charts(stats):
     bars1 = axes[0].barh(y_pos, lifetime_values, color=colors, alpha=0.9, edgecolor="white", linewidth=1.5, height=0.5)
     axes[0].set_title("Lifetime Contributions", fontsize=16, fontweight="bold", color="white")
     axes[0].set_xlabel("Total Lines of Code", fontsize=14, fontweight="bold", color="white", labelpad=15)
+    axes[0].set_yticks(y_pos)
+    axes[0].set_yticklabels(categories, fontsize=14, fontweight="bold", color="white")  # y-labels
+    
     for bar, label in zip(bars1, formatted_lifetime):
         width = bar.get_width()
         axes[0].text(width + max(lifetime_values) * 0.02, bar.get_y() + bar.get_height()/2, label, 
@@ -125,6 +128,9 @@ def generate_charts(stats):
     bars2 = axes[1].barh(y_pos, year_values, color=colors, alpha=0.9, edgecolor="white", linewidth=1.5, height=0.5)
     axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=16, fontweight="bold", color="white")
     axes[1].set_xlabel("Total Lines of Code", fontsize=14, fontweight="bold", color="white", labelpad=15)
+    axes[1].set_yticks(y_pos)
+    axes[1].set_yticklabels(categories, fontsize=14, fontweight="bold", color="white")  # y-labels
+    
     for bar, label in zip(bars2, formatted_year):
         width = bar.get_width()
         axes[1].text(width + max(year_values) * 0.02, bar.get_y() + bar.get_height()/2, label, 
