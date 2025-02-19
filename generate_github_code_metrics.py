@@ -3,10 +3,7 @@ import requests
 import time
 import datetime
 import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
-
-# Set a font that supports emojis
-plt.rcParams["font.family"] = "Noto Sans"
+import numpy as np
 
 # GitHub API settings
 GITHUB_USERNAME = "mkr302"  
@@ -78,52 +75,58 @@ def process_stats(repos):
 
     return {
         "lifetime": {
-            "📥 Lines Added": total_additions,
-            "🗑️ Lines Removed": total_deletions,
-            "🔄 Lines Updated": total_updates
+            "Lines Added": total_additions,
+            "Lines Removed": total_deletions,
+            "Lines Updated": total_updates
         },
         "current_year": {
-            "📥 Lines Added": current_year_add,
-            "🗑️ Lines Removed": current_year_del,
-            "🔄 Lines Updated": current_year_upd
+            "Lines Added": current_year_add,
+            "Lines Removed": current_year_del,
+            "Lines Updated": current_year_upd
         }
     }
 
-def generate_text_summary(stats):
-    """Generate a bullet-point text-based GitHub contribution summary with proper emoji rendering."""
+def generate_horizontal_bar_charts(stats):
+    """Generate two horizontal bar charts for lifetime and current year contributions."""
     
-    fig, ax = plt.subplots(figsize=(12, 6), facecolor="#0d1117")  # Dark theme background
-    ax.set_facecolor("#0d1117")
-    ax.axis("off")  # Hide axes
-    
+    # Define data
     categories = list(stats["lifetime"].keys())
     lifetime_values = list(stats["lifetime"].values())
     current_values = list(stats["current_year"].values())
 
-    # Define colors
-    text_color = "white"
-    icon_color = "#00FF00"  # Green
+    # Define colors (monochromatic shades of blue)
+    colors = ["#4A90E2", "#357ABD", "#2C5DAA"]  
 
-    # Title
-    ax.text(0.5, 1.1, "Code Contribution Summary", fontsize=20, fontweight="bold", color=text_color, ha="center", va="center")
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5), facecolor="#0d1117")  # Dark background
+    fig.suptitle("Code Contribution Summary", fontsize=18, fontweight="bold", color="white")
 
-    # Lifetime Contributions
-    ax.text(0.1, 0.8, "🏆 Lifetime Contributions", fontsize=16, fontweight="bold", color=text_color, ha="left", va="center")
-    y_position = 0.75
-    for category, value in zip(categories, lifetime_values):
-        ax.text(0.1, y_position, f"• {category}: {value:,}", fontsize=14, color=icon_color, ha="left", va="center")
-        y_position -= 0.1  # Add spacing to avoid overlap
+    # Lifetime Contributions Chart
+    axes[0].barh(categories, lifetime_values, color=colors, alpha=0.9)
+    axes[0].set_title("Lifetime Contributions", fontsize=14, fontweight="bold", color="white")
+    axes[0].set_xlabel("Total Lines of Code", fontsize=12, color="white")
+    axes[0].set_yticklabels(categories, fontsize=12, color="white")
+    axes[0].set_facecolor("#0d1117")
+    axes[0].tick_params(axis="x", colors="white")
+    axes[0].tick_params(axis="y", colors="white")
+    axes[0].grid(axis="x", linestyle="--", alpha=0.3, color="white")
 
-    # Current Year Contributions
-    ax.text(0.6, 0.8, f"📆 Contributions in {datetime.datetime.now().year}", fontsize=16, fontweight="bold", color=text_color, ha="left", va="center")
-    y_position = 0.75
-    for category, value in zip(categories, current_values):
-        ax.text(0.6, y_position, f"• {category}: {value:,}", fontsize=14, color=icon_color, ha="left", va="center")
-        y_position -= 0.1  # Add spacing to avoid overlap
+    # Current Year Contributions Chart
+    axes[1].barh(categories, current_values, color=colors, alpha=0.9)
+    axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=14, fontweight="bold", color="white")
+    axes[1].set_xlabel("Total Lines of Code", fontsize=12, color="white")
+    axes[1].set_yticklabels(categories, fontsize=12, color="white")
+    axes[1].set_facecolor("#0d1117")
+    axes[1].tick_params(axis="x", colors="white")
+    axes[1].tick_params(axis="y", colors="white")
+    axes[1].grid(axis="x", linestyle="--", alpha=0.3, color="white")
 
-    # Save the PNG file with a **GitHub dark background**
+    # Adjust layout
+    plt.tight_layout()
+    plt.subplots_adjust(top=0.85)  # Leave space for title
+
+    # Save the PNG file
     plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="#0d1117")
-    print("Graph saved as github_code_metrics.png (GitHub dark theme, bullet points, proper emoji rendering)")
+    print("Graph saved as github_code_metrics.png (GitHub dark theme, horizontal bar charts)")
 
 if __name__ == "__main__":
     print("Fetching GitHub repositories...")
@@ -132,6 +135,6 @@ if __name__ == "__main__":
     if repositories:
         print("Fetching lifetime and current year stats for all repositories...")
         processed_stats = process_stats(repositories)
-        print("Generating text-based summary with bullet points and proper emoji support...")
-        generate_text_summary(processed_stats)
-        print("✅ Done! Check github_code_metrics.png.")
+        print("Generating horizontal bar charts...")
+        generate_horizontal_bar_charts(processed_stats)
+        print("Done! Check github_code_metrics.png.")
