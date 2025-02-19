@@ -3,6 +3,10 @@ import requests
 import time
 import datetime
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+
+# Set a font that supports emojis
+plt.rcParams["font.family"] = "Noto Sans"
 
 # GitHub API settings
 GITHUB_USERNAME = "mkr302"  
@@ -74,24 +78,24 @@ def process_stats(repos):
 
     return {
         "lifetime": {
-            "Lines Added": total_additions,
-            "Lines Removed": total_deletions,
-            "Lines Updated": total_updates
+            "📥 Lines Added": total_additions,
+            "🗑️ Lines Removed": total_deletions,
+            "🔄 Lines Updated": total_updates
         },
         "current_year": {
-            "Lines Added": current_year_add,
-            "Lines Removed": current_year_del,
-            "Lines Updated": current_year_upd
+            "📥 Lines Added": current_year_add,
+            "🗑️ Lines Removed": current_year_del,
+            "🔄 Lines Updated": current_year_upd
         }
     }
 
 def generate_text_summary(stats):
-    """Generate a text-based GitHub contribution summary with correctly formatted green icons."""
-
-    fig, ax = plt.subplots(figsize=(12, 5), facecolor="black")
-    ax.set_facecolor("black")
+    """Generate a bullet-point text-based GitHub contribution summary with proper emoji rendering."""
+    
+    fig, ax = plt.subplots(figsize=(12, 6), facecolor="#0d1117")  # Dark theme background
+    ax.set_facecolor("#0d1117")
     ax.axis("off")  # Hide axes
-
+    
     categories = list(stats["lifetime"].keys())
     lifetime_values = list(stats["lifetime"].values())
     current_values = list(stats["current_year"].values())
@@ -101,23 +105,25 @@ def generate_text_summary(stats):
     icon_color = "#00FF00"  # Green
 
     # Title
-    ax.text(0.5, 1.1, "Code Contribution Summary", fontsize=18, fontweight="bold", color=text_color, ha="center", va="center")
+    ax.text(0.5, 1.1, "Code Contribution Summary", fontsize=20, fontweight="bold", color=text_color, ha="center", va="center")
 
-    # Labels and values for Lifetime Contributions
-    ax.text(0.25, 0.7, "Lifetime Contributions", fontsize=16, fontweight="bold", color=text_color, ha="center", va="center")
-    for i, (category, value) in enumerate(zip(categories, lifetime_values)):
-        ax.text(0.25, 0.6 - i * 0.15, f"{category}:", fontsize=13, color=text_color, ha="center", va="center")
-        ax.text(0.3, 0.6 - i * 0.15, f"{value:,}", fontsize=13, color=icon_color, ha="center", va="center")
+    # Lifetime Contributions
+    ax.text(0.1, 0.8, "🏆 Lifetime Contributions", fontsize=16, fontweight="bold", color=text_color, ha="left", va="center")
+    y_position = 0.75
+    for category, value in zip(categories, lifetime_values):
+        ax.text(0.1, y_position, f"• {category}: {value:,}", fontsize=14, color=icon_color, ha="left", va="center")
+        y_position -= 0.1  # Add spacing to avoid overlap
 
-    # Labels and values for Current Year Contributions
-    ax.text(0.75, 0.7, f"Contributions in {datetime.datetime.now().year}", fontsize=16, fontweight="bold", color=text_color, ha="center", va="center")
-    for i, (category, value) in enumerate(zip(categories, current_values)):
-        ax.text(0.75, 0.6 - i * 0.15, f"{category}:", fontsize=13, color=text_color, ha="center", va="center")
-        ax.text(0.8, 0.6 - i * 0.15, f"{value:,}", fontsize=13, color=icon_color, ha="center", va="center")
+    # Current Year Contributions
+    ax.text(0.6, 0.8, f"📆 Contributions in {datetime.datetime.now().year}", fontsize=16, fontweight="bold", color=text_color, ha="left", va="center")
+    y_position = 0.75
+    for category, value in zip(categories, current_values):
+        ax.text(0.6, y_position, f"• {category}: {value:,}", fontsize=14, color=icon_color, ha="left", va="center")
+        y_position -= 0.1  # Add spacing to avoid overlap
 
-    # Save the PNG file with a **black background**
+    # Save the PNG file with a **GitHub dark background**
     plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="#0d1117")
-    print("Graph saved as github_code_metrics.png (black background, green symbols, properly formatted text)")
+    print("Graph saved as github_code_metrics.png (GitHub dark theme, bullet points, proper emoji rendering)")
 
 if __name__ == "__main__":
     print("Fetching GitHub repositories...")
@@ -126,6 +132,6 @@ if __name__ == "__main__":
     if repositories:
         print("Fetching lifetime and current year stats for all repositories...")
         processed_stats = process_stats(repositories)
-        print("Generating text-based summary with correctly formatted green icons...")
+        print("Generating text-based summary with bullet points and proper emoji support...")
         generate_text_summary(processed_stats)
-        print("Done! Check github_code_text_summary.png.")
+        print("✅ Done! Check github_code_metrics.png.")
