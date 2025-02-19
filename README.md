@@ -25,10 +25,10 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 <table>
   <tr>
     <td align="center">
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark&langs_count=6" height="165">
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark&langs_count=6" width="450" height="165">
     </td>
     <td align="center">
-      <img src="https://github-readme-stats.vercel.app/api?username=mkr302&show_icons=true&theme=dark" height="165">
+      <img src="https://github-readme-stats.vercel.app/api?username=mkr302&show_icons=true&theme=dark" width="450" height="165">
     </td>
   </tr>
 </table>
