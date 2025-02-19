@@ -64,35 +64,35 @@ def process_stats(repos):
 
                 # Lifetime stats
                 total_additions += additions
-                total_deletions += deletions
                 total_updates += min(additions, deletions)
+                total_deletions += deletions
 
                 # Current year stats
                 if week_year == current_year:
                     current_year_add += additions
-                    current_year_del += deletions
                     current_year_upd += min(additions, deletions)
+                    current_year_del += deletions
 
     return {
         "lifetime": {
             "Lines Added": total_additions,
-            "Lines Removed": total_deletions,
-            "Lines Updated": total_updates
+            "Lines Updated": total_updates,
+            "Lines Removed": total_deletions
         },
         "current_year": {
             "Lines Added": current_year_add,
-            "Lines Removed": current_year_del,
-            "Lines Updated": current_year_upd
+            "Lines Updated": current_year_upd,
+            "Lines Removed": current_year_del
         }
     }
 
 def generate_horizontal_bar_charts(stats):
     """Generate two horizontal bar charts for lifetime and current year contributions."""
     
-    # Define data
-    categories = list(stats["lifetime"].keys())
-    lifetime_values = list(stats["lifetime"].values())
-    current_values = list(stats["current_year"].values())
+    # Define reordered data
+    categories = ["Lines Added", "Lines Updated", "Lines Removed"]
+    lifetime_values = [stats["lifetime"][cat] for cat in categories]
+    current_values = [stats["current_year"][cat] for cat in categories]
 
     # Define colors (monochromatic shades of blue)
     colors = ["#4A90E2", "#357ABD", "#2C5DAA"]  
@@ -141,7 +141,7 @@ def generate_horizontal_bar_charts(stats):
 
     # Save the PNG file
     plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="#0d1117")
-    print("Graph saved as github_code_metrics.png (GitHub dark theme, horizontal bar charts, no grid lines, no x-ticks, values on bars)")
+    print("Graph saved as github_code_metrics.png (GitHub dark theme, horizontal bar charts, reordered categories)")
 
 if __name__ == "__main__":
     print("Fetching GitHub repositories...")
