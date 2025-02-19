@@ -103,12 +103,13 @@ def generate_horizontal_bar_charts(stats):
     # Function to add labels on bars
     def add_labels(ax, values):
         for index, value in enumerate(values):
-            ax.text(value + (max(values) * 0.01), index, f"{value:,}", fontsize=12, color="white", va="center")
+            ax.text(value + (max(values) * 0.02), index, f"{value:,}", fontsize=12, color="white", va="center")
 
     # Lifetime Contributions Chart
     axes[0].barh(categories, lifetime_values, color=colors, alpha=0.9)
     axes[0].set_title("Lifetime Contributions", fontsize=14, fontweight="bold", color="white")
     axes[0].set_xlabel("Total Lines of Code", fontsize=12, color="white")
+    axes[0].set_yticks(np.arange(len(categories)))
     axes[0].set_yticklabels(categories, fontsize=12, color="white")
     axes[0].set_facecolor("#0d1117")
     
@@ -124,7 +125,11 @@ def generate_horizontal_bar_charts(stats):
     axes[1].barh(categories, current_values, color=colors, alpha=0.9)
     axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=14, fontweight="bold", color="white")
     axes[1].set_xlabel("Total Lines of Code", fontsize=12, color="white")
-    #axes[1].set_yticklabels(categories, fontsize=12, color="white")
+    
+    # Remove y labels in second graph
+    axes[1].set_yticks(np.arange(len(categories)))
+    axes[1].set_yticklabels([""] * len(categories))  # Remove labels
+    
     axes[1].set_facecolor("#0d1117")
 
     # Remove x ticks and grid lines
@@ -141,7 +146,7 @@ def generate_horizontal_bar_charts(stats):
 
     # Save the PNG file
     plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="#0d1117")
-    print("Graph saved as github_code_metrics.png (GitHub dark theme, horizontal bar charts, reordered categories)")
+    print("Graph saved as github_code_metrics.png (GitHub dark theme, horizontal bar charts, reordered categories, removed y-labels on second graph)")
 
 if __name__ == "__main__":
     print("Fetching GitHub repositories...")
