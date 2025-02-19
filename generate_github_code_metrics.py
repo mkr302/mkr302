@@ -74,14 +74,14 @@ def process_stats(repos):
 
     return {
         "lifetime": {
-            "📥 Lines Added": total_additions,
-            "🗑️ Lines Removed": total_deletions,
-            "🔄 Lines Updated": total_updates
+            "Lines Added": total_additions,
+            "Lines Removed": total_deletions,
+            "Lines Updated": total_updates
         },
         "current_year": {
-            "📥 Lines Added": current_year_add,
-            "🗑️ Lines Removed": current_year_del,
-            "🔄 Lines Updated": current_year_upd
+            "Lines Added": current_year_add,
+            "Lines Removed": current_year_del,
+            "Lines Updated": current_year_upd
         }
     }
 
@@ -106,13 +106,13 @@ def generate_text_summary(stats):
     # Labels and values for Lifetime Contributions
     ax.text(0.25, 0.7, "🏆 Lifetime Contributions", fontsize=16, fontweight="bold", color=text_color, ha="center", va="center")
     for i, (category, value) in enumerate(zip(categories, lifetime_values)):
-        ax.text(0.25, 0.6 - i * 0.15, f"{category}:", fontsize=14, color=icon_color, ha="right", va="center")
+        ax.text(0.25, 0.6 - i * 0.15, f"{category}:", fontsize=14, ha="right", va="center")
         ax.text(0.3, 0.6 - i * 0.15, f"{value:,}", fontsize=14, color=text_color, ha="left", va="center")
 
     # Labels and values for Current Year Contributions
     ax.text(0.75, 0.7, f"📆 Contributions in {datetime.datetime.now().year}", fontsize=16, fontweight="bold", color=text_color, ha="center", va="center")
     for i, (category, value) in enumerate(zip(categories, current_values)):
-        ax.text(0.75, 0.6 - i * 0.15, f"{category}:", fontsize=14, color=icon_color, ha="right", va="center")
+        ax.text(0.75, 0.6 - i * 0.15, f"{category}:", fontsize=14, ha="right", va="center")
         ax.text(0.8, 0.6 - i * 0.15, f"{value:,}", fontsize=14, color=text_color, ha="left", va="center")
 
     # Save the PNG file with a **black background**
