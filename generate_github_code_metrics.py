@@ -116,7 +116,7 @@ def generate_horizontal_bar_charts(stats):
 
     # Lifetime Contributions Chart
     axes[0].barh(categories, lifetime_values, color=colors, alpha=0.9, height=0.4)  # Reduced bar width
-    axes[0].set_title("Lifetime Contributions", fontsize=14, fontweight="bold", color="white", pad=40)  # Increased spacing
+    axes[0].set_title("Lifetime Contributions", fontsize=14, fontweight="bold", color="white", pad=20)  # Increased spacing
     #axes[0].set_xlabel("Total Lines of Code", fontsize=12, color="white")
     axes[0].set_yticks(np.arange(len(categories)))
     axes[0].set_yticklabels(categories, fontsize=12, color="white")
@@ -138,7 +138,7 @@ def generate_horizontal_bar_charts(stats):
 
     # Current Year Contributions Chart
     axes[1].barh(categories, current_values, color=colors, alpha=0.9, height=0.4)  # Reduced bar width
-    axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=14, fontweight="bold", color="white", pad=40)  # Increased spacing
+    axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=14, fontweight="bold", color="white", pad=10)  # Increased spacing
     #axes[1].set_xlabel("Total Lines of Code", fontsize=12, color="white")
     axes[1].set_xlim([0, x_limit])  # **Set dynamic x-axis limit**
 
