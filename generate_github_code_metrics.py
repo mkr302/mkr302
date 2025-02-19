@@ -87,7 +87,7 @@ def process_stats(repos):
     }
 
 def generate_horizontal_bar_charts(stats):
-    """Generate two horizontal bar charts for lifetime and current year contributions."""
+    """Generate two horizontal bar charts for lifetime and current year contributions with auto-scaling."""
     
     # Define reordered data (Reversed Order for Correct Display)
     categories = ["Lines Added", "Lines Updated", "Lines Removed"]
@@ -100,22 +100,27 @@ def generate_horizontal_bar_charts(stats):
     colors = ["#4A90E2", "#357ABD", "#2C5DAA"]  
 
     fig, axes = plt.subplots(1, 2, figsize=(14, 5), facecolor="#0d1117")  # Increased figure size for spacing
-    fig.suptitle("Code Contribution Summary", fontsize=18, fontweight="bold", color="white")
+    fig.suptitle("Code Contribution Summary (# of Lines of Code)", fontsize=18, fontweight="bold", color="white")
+
+    # **Get max value across both graphs & set x-axis limit dynamically**
+    max_value = max(max(lifetime_values), max(current_values))
+    x_limit = max_value * 1.10  # Add a 10% margin
 
     # Function to add labels on bars
     def add_labels(ax, values):
         for index, value in enumerate(values):
-            ax.text(value + (max(values) * 0.02), index, f"{value:,}", 
+            ax.text(value + (x_limit * 0.02), index, f"{value:,}",  # Adjust label position dynamically
                     fontsize=12, fontweight="bold", color="white", va="center")
 
     # Lifetime Contributions Chart
     axes[0].barh(categories, lifetime_values, color=colors, alpha=0.9, height=0.4)  # Reduced bar width
-    axes[0].set_title("Lifetime Contributions", fontsize=14, fontweight="bold", color="white", pad=20)  # Increased spacing
-    #axes[0].set_xlabel("Total Lines of Code", fontsize=12, color="white")
+    axes[0].set_title("Lifetime Contributions", fontsize=14, fontweight="bold", color="white", pad=40)  # Increased spacing
+    axes[0].set_xlabel("Total Lines of Code", fontsize=12, color="white")
     axes[0].set_yticks(np.arange(len(categories)))
     axes[0].set_yticklabels(categories, fontsize=12, color="white")
     axes[0].set_facecolor("#0d1117")
-    
+    axes[0].set_xlim([0, x_limit])  # **Set dynamic x-axis limit**
+
     # Remove y tick marks
     axes[0].tick_params(axis="y", left=False)  
     # Remove x ticks and grid lines
@@ -131,9 +136,10 @@ def generate_horizontal_bar_charts(stats):
 
     # Current Year Contributions Chart
     axes[1].barh(categories, current_values, color=colors, alpha=0.9, height=0.4)  # Reduced bar width
-    axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=14, fontweight="bold", color="white", pad=20)  # Increased spacing
-    #axes[1].set_xlabel("Total Lines of Code", fontsize=12, color="white")
-    
+    axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=14, fontweight="bold", color="white", pad=40)  # Increased spacing
+    axes[1].set_xlabel("Total Lines of Code", fontsize=12, color="white")
+    axes[1].set_xlim([0, x_limit])  # **Set dynamic x-axis limit**
+
     # Remove y labels and ticks in second graph
     axes[1].set_yticks(np.arange(len(categories)))
     axes[1].set_yticklabels([""] * len(categories))  # Remove labels
@@ -157,7 +163,7 @@ def generate_horizontal_bar_charts(stats):
 
     # Save the PNG file
     plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="#0d1117")
-    print("Graph saved as github_code_metrics.png (GitHub dark theme, horizontal bar charts, correctly ordered bars, removed y-ticks in both graphs, increased spacing, bold values, reduced bar width)")
+    print("Graph saved as github_code_metrics.png with auto-scaling.")
 
 if __name__ == "__main__":
     print("Fetching GitHub repositories...")
@@ -166,6 +172,6 @@ if __name__ == "__main__":
     if repositories:
         print("Fetching lifetime and current year stats for all repositories...")
         processed_stats = process_stats(repositories)
-        print("Generating horizontal bar charts...")
+        print("Generating horizontal bar charts with auto-scaling...")
         generate_horizontal_bar_charts(processed_stats)
         print("Done! Check github_code_metrics.png.")
