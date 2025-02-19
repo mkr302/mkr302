@@ -102,7 +102,7 @@ def generate_horizontal_bar_charts(stats):
     colors = ["#4A90E2", "#357ABD", "#2C5DAA"]  
 
     fig, axes = plt.subplots(1, 2, figsize=(14, 5), facecolor="#0d1117")  # Increased figure size for spacing
-    fig.suptitle("Code Contribution Summary", fontsize=18, fontweight="bold", color="white")
+    fig.suptitle("Code Contribution Summary", fontsize=18, fontweight="bold", color="white", y=0.98)
 
     # Get max value across both graphs & set x-axis limit dynamically
     max_value = max(max(lifetime_values), max(current_values))
