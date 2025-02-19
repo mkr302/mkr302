@@ -124,7 +124,7 @@ def generate_horizontal_bar_charts(stats):
     axes[1].barh(categories, current_values, color=colors, alpha=0.9)
     axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=14, fontweight="bold", color="white")
     axes[1].set_xlabel("Total Lines of Code", fontsize=12, color="white")
-    axes[1].set_yticklabels(categories, fontsize=12, color="white")
+    #axes[1].set_yticklabels(categories, fontsize=12, color="white")
     axes[1].set_facecolor("#0d1117")
 
     # Remove x ticks and grid lines
