@@ -102,7 +102,7 @@ def generate_horizontal_bar_charts(stats):
     fig, axes = plt.subplots(1, 2, figsize=(14, 5), facecolor="#0d1117")  # Increased figure size for spacing
     fig.suptitle("Code Contribution Summary (# of Lines of Code)", fontsize=18, fontweight="bold", color="white")
 
-    # **Get max value across both graphs & set x-axis limit dynamically**
+    # Get max value across both graphs & set x-axis limit dynamically
     max_value = max(max(lifetime_values), max(current_values))
     x_limit = max_value * 1.10  # Add a 10% margin
 
@@ -119,7 +119,7 @@ def generate_horizontal_bar_charts(stats):
     axes[0].set_yticks(np.arange(len(categories)))
     axes[0].set_yticklabels(categories, fontsize=12, color="white")
     axes[0].set_facecolor("#0d1117")
-    axes[0].set_xlim([0, x_limit])  # **Set dynamic x-axis limit**
+    axes[0].set_xlim([0, x_limit])  # Set dynamic x-axis limit
 
     # Remove y tick marks
     axes[0].tick_params(axis="y", left=False)  
