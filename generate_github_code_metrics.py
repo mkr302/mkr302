@@ -97,16 +97,17 @@ def generate_horizontal_bar_charts(stats):
     # Define colors (monochromatic shades of blue)
     colors = ["#4A90E2", "#357ABD", "#2C5DAA"]  
 
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5), facecolor="#0d1117")  # Dark background
+    fig, axes = plt.subplots(1, 2, figsize=(14, 5), facecolor="#0d1117")  # Increased figure size for spacing
     fig.suptitle("Code Contribution Summary", fontsize=18, fontweight="bold", color="white")
 
     # Function to add labels on bars
     def add_labels(ax, values):
         for index, value in enumerate(values):
-            ax.text(value + (max(values) * 0.02), index, f"{value:,}", fontsize=12, color="white", va="center")
+            ax.text(value + (max(values) * 0.02), index, f"{value:,}", 
+                    fontsize=12, fontweight="bold", color="white", va="center")
 
     # Lifetime Contributions Chart
-    axes[0].barh(categories, lifetime_values, color=colors, alpha=0.9)
+    axes[0].barh(categories, lifetime_values, color=colors, alpha=0.9, height=0.4)  # Reduced bar width
     axes[0].set_title("Lifetime Contributions", fontsize=14, fontweight="bold", color="white")
     axes[0].set_xlabel("Total Lines of Code", fontsize=12, color="white")
     axes[0].set_yticks(np.arange(len(categories)))
@@ -117,36 +118,43 @@ def generate_horizontal_bar_charts(stats):
     axes[0].tick_params(axis="x", colors="white", bottom=False, labelbottom=False)
     axes[0].tick_params(axis="y", colors="white")
     axes[0].grid(False)
+
+    # Remove bounding box
+    for spine in axes[0].spines.values():
+        spine.set_visible(False)
     
     # Add labels on top of bars
     add_labels(axes[0], lifetime_values)
 
     # Current Year Contributions Chart
-    axes[1].barh(categories, current_values, color=colors, alpha=0.9)
+    axes[1].barh(categories, current_values, color=colors, alpha=0.9, height=0.4)  # Reduced bar width
     axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=14, fontweight="bold", color="white")
     axes[1].set_xlabel("Total Lines of Code", fontsize=12, color="white")
     
-    # Remove y labels in second graph
+    # Remove y labels and ticks in second graph
     axes[1].set_yticks(np.arange(len(categories)))
     axes[1].set_yticklabels([""] * len(categories))  # Remove labels
+    axes[1].tick_params(axis="y", left=False)  # Remove tick marks
     
     axes[1].set_facecolor("#0d1117")
 
     # Remove x ticks and grid lines
     axes[1].tick_params(axis="x", colors="white", bottom=False, labelbottom=False)
-    axes[1].tick_params(axis="y", colors="white")
     axes[1].grid(False)
+
+    # Remove bounding box
+    for spine in axes[1].spines.values():
+        spine.set_visible(False)
 
     # Add labels on top of bars
     add_labels(axes[1], current_values)
 
-    # Adjust layout
-    plt.tight_layout()
-    plt.subplots_adjust(top=0.85)  # Leave space for title
+    # Adjust layout for better spacing
+    plt.tight_layout(pad=4.5)  # Increase spacing between plots
 
     # Save the PNG file
     plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="#0d1117")
-    print("Graph saved as github_code_metrics.png (GitHub dark theme, horizontal bar charts, reordered categories, removed y-labels on second graph)")
+    print("Graph saved as github_code_metrics.png (GitHub dark theme, horizontal bar charts, removed bounding boxes, increased spacing, bold values, reduced bar width)")
 
 if __name__ == "__main__":
     print("Fetching GitHub repositories...")
