@@ -93,14 +93,16 @@ def generate_horizontal_bar_charts(stats):
     categories = ["Lines Added", "Lines Updated", "Lines Removed"]
     categories.reverse()  # Reverse the order so "Lines Added" appears at the top
 
-    lifetime_values = [stats["lifetime"][cat] for cat in reversed(categories)]
-    current_values = [stats["current_year"][cat] for cat in reversed(categories)]
+    #lifetime_values = [stats["lifetime"][cat] for cat in reversed(categories)]
+    #current_values = [stats["current_year"][cat] for cat in reversed(categories)]
+    lifetime_values = [stats["lifetime"][cat] for cat in categories]
+    current_values = [stats["current_year"][cat] for cat in categories]
 
     # Define colors (monochromatic shades of blue)
     colors = ["#4A90E2", "#357ABD", "#2C5DAA"]  
 
     fig, axes = plt.subplots(1, 2, figsize=(14, 5), facecolor="#0d1117")  # Increased figure size for spacing
-    fig.suptitle("Code Contribution Summary (# of Lines of Code)", fontsize=18, fontweight="bold", color="white")
+    fig.suptitle("Code Contribution Summary", fontsize=18, fontweight="bold", color="white")
 
     # Get max value across both graphs & set x-axis limit dynamically
     max_value = max(max(lifetime_values), max(current_values))
