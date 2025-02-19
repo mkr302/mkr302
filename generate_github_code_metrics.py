@@ -100,15 +100,25 @@ def generate_horizontal_bar_charts(stats):
     fig, axes = plt.subplots(1, 2, figsize=(12, 5), facecolor="#0d1117")  # Dark background
     fig.suptitle("Code Contribution Summary", fontsize=18, fontweight="bold", color="white")
 
+    # Function to add labels on bars
+    def add_labels(ax, values):
+        for index, value in enumerate(values):
+            ax.text(value + (max(values) * 0.01), index, f"{value:,}", fontsize=12, color="white", va="center")
+
     # Lifetime Contributions Chart
     axes[0].barh(categories, lifetime_values, color=colors, alpha=0.9)
     axes[0].set_title("Lifetime Contributions", fontsize=14, fontweight="bold", color="white")
     axes[0].set_xlabel("Total Lines of Code", fontsize=12, color="white")
     axes[0].set_yticklabels(categories, fontsize=12, color="white")
     axes[0].set_facecolor("#0d1117")
-    axes[0].tick_params(axis="x", colors="white")
+    
+    # Remove x ticks and grid lines
+    axes[0].tick_params(axis="x", colors="white", bottom=False, labelbottom=False)
     axes[0].tick_params(axis="y", colors="white")
-    axes[0].grid(axis="x", linestyle="--", alpha=0.3, color="white")
+    axes[0].grid(False)
+    
+    # Add labels on top of bars
+    add_labels(axes[0], lifetime_values)
 
     # Current Year Contributions Chart
     axes[1].barh(categories, current_values, color=colors, alpha=0.9)
@@ -116,9 +126,14 @@ def generate_horizontal_bar_charts(stats):
     axes[1].set_xlabel("Total Lines of Code", fontsize=12, color="white")
     axes[1].set_yticklabels(categories, fontsize=12, color="white")
     axes[1].set_facecolor("#0d1117")
-    axes[1].tick_params(axis="x", colors="white")
+
+    # Remove x ticks and grid lines
+    axes[1].tick_params(axis="x", colors="white", bottom=False, labelbottom=False)
     axes[1].tick_params(axis="y", colors="white")
-    axes[1].grid(axis="x", linestyle="--", alpha=0.3, color="white")
+    axes[1].grid(False)
+
+    # Add labels on top of bars
+    add_labels(axes[1], current_values)
 
     # Adjust layout
     plt.tight_layout()
@@ -126,7 +141,7 @@ def generate_horizontal_bar_charts(stats):
 
     # Save the PNG file
     plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="#0d1117")
-    print("Graph saved as github_code_metrics.png (GitHub dark theme, horizontal bar charts)")
+    print("Graph saved as github_code_metrics.png (GitHub dark theme, horizontal bar charts, no grid lines, no x-ticks, values on bars)")
 
 if __name__ == "__main__":
     print("Fetching GitHub repositories...")
