@@ -86,7 +86,7 @@ def process_stats(repos):
     }
 
 def generate_text_summary(stats):
-    """Generate a text-based GitHub contribution summary with green symbols and white text."""
+    """Generate a text-based GitHub contribution summary with correctly formatted green icons."""
 
     fig, ax = plt.subplots(figsize=(12, 5), facecolor="black")
     ax.set_facecolor("black")
@@ -106,18 +106,18 @@ def generate_text_summary(stats):
     # Labels and values for Lifetime Contributions
     ax.text(0.25, 0.7, "🏆 Lifetime Contributions", fontsize=16, fontweight="bold", color=text_color, ha="center", va="center")
     for i, (category, value) in enumerate(zip(categories, lifetime_values)):
-        ax.text(0.25, 0.6 - i * 0.15, f"<span style='color:{icon_color}'>{category}</span>: {value:,}", 
-                fontsize=14, color=text_color, ha="center", va="center")
+        ax.text(0.25, 0.6 - i * 0.15, f"{category}:", fontsize=14, color=icon_color, ha="right", va="center")
+        ax.text(0.3, 0.6 - i * 0.15, f"{value:,}", fontsize=14, color=text_color, ha="left", va="center")
 
     # Labels and values for Current Year Contributions
     ax.text(0.75, 0.7, f"📆 Contributions in {datetime.datetime.now().year}", fontsize=16, fontweight="bold", color=text_color, ha="center", va="center")
     for i, (category, value) in enumerate(zip(categories, current_values)):
-        ax.text(0.75, 0.6 - i * 0.15, f"<span style='color:{icon_color}'>{category}</span>: {value:,}", 
-                fontsize=14, color=text_color, ha="center", va="center")
+        ax.text(0.75, 0.6 - i * 0.15, f"{category}:", fontsize=14, color=icon_color, ha="right", va="center")
+        ax.text(0.8, 0.6 - i * 0.15, f"{value:,}", fontsize=14, color=text_color, ha="left", va="center")
 
     # Save the PNG file with a **black background**
-    plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="black")
-    print("Graph saved as github_code_metrics.png (black background, text with green icons)")
+    plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="#0d1117")
+    print("Graph saved as github_code_metrics.png (black background, green symbols, properly formatted text)")
 
 if __name__ == "__main__":
     print("Fetching GitHub repositories...")
@@ -126,6 +126,6 @@ if __name__ == "__main__":
     if repositories:
         print("Fetching lifetime and current year stats for all repositories...")
         processed_stats = process_stats(repositories)
-        print("Generating text-based summary with green symbols...")
+        print("Generating text-based summary with correctly formatted green icons...")
         generate_text_summary(processed_stats)
         print("Done! Check github_code_text_summary.png.")
