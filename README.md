@@ -25,11 +25,9 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 <table>
   <tr>
     <td align="center">
-      <h3>Most Used Languages</h3>
       <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mkr302&layout=compact&theme=dark&langs_count=6" height="165">
     </td>
     <td align="center">
-      <h3>Overall GitHub Stats</h3>
       <img src="https://github-readme-stats.vercel.app/api?username=mkr302&show_icons=true&theme=dark" height="165">
     </td>
   </tr>
@@ -41,7 +39,6 @@ Engineering and Data Science enthusiast with over 14 years of hands-on experienc
 <table>
   <tr>
     <td align="center">
-      <h3>Total Code Contributions</h3>
       <p align="left">
         <img src="https://github.com/mkr302/mkr302/blob/main/github_code_metrics.png" width="900">
       </p>
