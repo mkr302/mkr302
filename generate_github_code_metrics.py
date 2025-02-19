@@ -101,7 +101,7 @@ def generate_text_summary(stats):
     icon_color = "#00FF00"  # Green
 
     # Title
-    ax.text(0.5, 1.1, "GitHub Contribution Summary", fontsize=20, fontweight="bold", color=text_color, ha="center", va="center")
+    ax.text(0.5, 1.1, "Code Contribution Summary", fontsize=20, fontweight="bold", color=text_color, ha="center", va="center")
 
     # Labels and values for Lifetime Contributions
     ax.text(0.25, 0.7, "🏆 Lifetime Contributions", fontsize=16, fontweight="bold", color=text_color, ha="center", va="center")
