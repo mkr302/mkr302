@@ -106,14 +106,14 @@ def generate_text_summary(stats):
     # Labels and values for Lifetime Contributions
     ax.text(0.25, 0.7, "Lifetime Contributions", fontsize=16, fontweight="bold", color=text_color, ha="center", va="center")
     for i, (category, value) in enumerate(zip(categories, lifetime_values)):
-        ax.text(0.25, 0.6 - i * 0.15, f"{category}:", fontsize=13, color=text_color, ha="right", va="left")
-        ax.text(0.3, 0.6 - i * 0.15, f"{value:,}", fontsize=13, color=icon_color, ha="left", va="left")
+        ax.text(0.25, 0.6 - i * 0.15, f"{category}:", fontsize=13, color=text_color, ha="center", va="left")
+        ax.text(0.3, 0.6 - i * 0.15, f"{value:,}", fontsize=13, color=icon_color, ha="center", va="left")
 
     # Labels and values for Current Year Contributions
     ax.text(0.75, 0.7, f"Contributions in {datetime.datetime.now().year}", fontsize=16, fontweight="bold", color=text_color, ha="center", va="center")
     for i, (category, value) in enumerate(zip(categories, current_values)):
-        ax.text(0.75, 0.6 - i * 0.15, f"{category}:", fontsize=13, color=text_color, ha="right", va="left")
-        ax.text(0.8, 0.6 - i * 0.15, f"{value:,}", fontsize=13, color=icon_color, ha="left", va="left")
+        ax.text(0.75, 0.6 - i * 0.15, f"{category}:", fontsize=13, color=text_color, ha="center", va="left")
+        ax.text(0.8, 0.6 - i * 0.15, f"{value:,}", fontsize=13, color=icon_color, ha="center", va="left")
 
     # Save the PNG file with a **black background**
     plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="#0d1117")
