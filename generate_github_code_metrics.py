@@ -89,10 +89,12 @@ def process_stats(repos):
 def generate_horizontal_bar_charts(stats):
     """Generate two horizontal bar charts for lifetime and current year contributions."""
     
-    # Define reordered data
+    # Define reordered data (Reversed Order for Correct Display)
     categories = ["Lines Added", "Lines Updated", "Lines Removed"]
-    lifetime_values = [stats["lifetime"][cat] for cat in categories]
-    current_values = [stats["current_year"][cat] for cat in categories]
+    categories.reverse()  # Reverse the order so "Lines Added" appears at the top
+
+    lifetime_values = [stats["lifetime"][cat] for cat in reversed(categories)]
+    current_values = [stats["current_year"][cat] for cat in reversed(categories)]
 
     # Define colors (monochromatic shades of blue)
     colors = ["#4A90E2", "#357ABD", "#2C5DAA"]  
@@ -113,10 +115,9 @@ def generate_horizontal_bar_charts(stats):
     axes[0].set_yticks(np.arange(len(categories)))
     axes[0].set_yticklabels(categories, fontsize=12, color="white")
     axes[0].set_facecolor("#0d1117")
-
-    # Remove y tick marks
-    axes[0].tick_params(axis="y", left=False) 
     
+    # Remove y tick marks
+    axes[0].tick_params(axis="y", left=False)  
     # Remove x ticks and grid lines
     axes[0].tick_params(axis="x", colors="white", bottom=False, labelbottom=False)
     axes[0].grid(False)
@@ -130,7 +131,7 @@ def generate_horizontal_bar_charts(stats):
 
     # Current Year Contributions Chart
     axes[1].barh(categories, current_values, color=colors, alpha=0.9, height=0.4)  # Reduced bar width
-    axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=14, fontweight="bold", color="white")
+    axes[1].set_title(f"Contributions in {datetime.datetime.now().year}", fontsize=14, fontweight="bold", color="white", pad=20)  # Increased spacing
     axes[1].set_xlabel("Total Lines of Code", fontsize=12, color="white")
     
     # Remove y labels and ticks in second graph
@@ -156,7 +157,7 @@ def generate_horizontal_bar_charts(stats):
 
     # Save the PNG file
     plt.savefig("github_code_metrics.png", dpi=300, bbox_inches="tight", facecolor="#0d1117")
-    print("Graph saved as github_code_metrics.png (GitHub dark theme, horizontal bar charts, removed bounding boxes, increased spacing, bold values, reduced bar width)")
+    print("Graph saved as github_code_metrics.png (GitHub dark theme, horizontal bar charts, correctly ordered bars, removed y-ticks in both graphs, increased spacing, bold values, reduced bar width)")
 
 if __name__ == "__main__":
     print("Fetching GitHub repositories...")
