@@ -101,7 +101,7 @@ def generate_horizontal_bar_charts(stats):
     # Define colors (monochromatic shades of blue)
     colors = ["#4A90E2", "#357ABD", "#2C5DAA"]  
 
-    fig, axes = plt.subplots(1, 2, figsize=(14, 5), facecolor="#0d1117")  # Increased figure size for spacing
+    fig, axes = plt.subplots(1, 2, figsize=(14, 3), facecolor="#0d1117")  # Increased figure size for spacing
     fig.suptitle("Code Contribution Summary", fontsize=18, fontweight="bold", color="white")
 
     # Get max value across both graphs & set x-axis limit dynamically
