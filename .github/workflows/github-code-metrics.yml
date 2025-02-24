@@ -1,8 +1,8 @@
 name: Generate GitHub Code Metrics PNG
 
 on:
-  schedule:
-    - cron: "0 5 * * *"  # Runs at 12:00 AM Eastern Time (5:00 AM UTC)
+  #schedule:
+    #- cron: "0 5 * * *"  # Runs at 12:00 AM Eastern Time (5:00 AM UTC)
   workflow_dispatch:  # Allows manual execution
 
 jobs:
