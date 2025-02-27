@@ -22,13 +22,16 @@ jobs:
 
       - name: Run Script
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          #GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}  # Use GH_PAT instead of the default token
         run: python generate_github_code_metrics.py
 
       - name: Commit and Push PNG
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}  # Use GH_PAT for authentication
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'actions@github.com'
           git add github_code_metrics.png
           git commit -m "Updated GitHub code metrics graph" || echo "No changes to commit"
-          git push
+          git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git HEAD:main  # Use GH_PAT for pushing
