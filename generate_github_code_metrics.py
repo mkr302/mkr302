@@ -7,7 +7,8 @@ import numpy as np
 
 # GitHub API settings
 GITHUB_USERNAME = "mkr302"  
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+#GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+GITHUB_TOKEN = os.getenv("GH_PAT") # PAT GitHub Token
 
 GITHUB_API_URL = f"https://api.github.com/users/{GITHUB_USERNAME}/repos"
 
